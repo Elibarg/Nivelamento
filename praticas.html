@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práticas Sustentáveis - EcoConsciente</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoConsciente</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="praticas.html" class="active"><i class="fas fa-recycle"></i> Práticas</a></li>
+                <li><a href="reciclagem.html"><i class="fas fa-trash-alt"></i> Reciclagem</a></li>
+                <li><a href="clima.html"><i class="fas fa-cloud-sun"></i> Clima</a></li>
+                <li><a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1><i class="fas fa-seedling"></i> Práticas Sustentáveis</h1>
+            <p>Adote hábitos simples no seu dia a dia que fazem a diferença para o meio ambiente.</p>
+        </section>
+
+        <section class="praticas-grid">
+            <article class="pratica-card">
+                <div class="pratica-icon">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <h3>Economia de Água</h3>
+                <ul>
+                    <li>Feche a torneira ao escovar os dentes</li>
+                    <li>Tome banhos mais curtos</li>
+                    <li>Conserte vazamentos imediatamente</li>
+                    <li>Reutilize água da chuva</li>
+                </ul>
+            </article>
+
+            <article class="pratica-card">
+                <div class="pratica-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Economia de Energia</h3>
+                <ul>
+                    <li>Use lâmpadas LED</li>
+                    <li>Desligue aparelhos da tomada</li>
+                    <li>Aproveite a luz natural</li>
+                    <li>Escolha eletrodomésticos eficientes</li>
+                </ul>
+            </article>
+
+            <article class="pratica-card">
+                <div class="pratica-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <h3>Consumo Consciente</h3>
+                <ul>
+                    <li>Evite plásticos descartáveis</li>
+                    <li>Use ecobags</li>
+                    <li>Prefira produtos com menos embalagens</li>
+                    <li>Compre apenas o necessário</li>
+                </ul>
+            </article>
+
+            <article class="pratica-card">
+                <div class="pratica-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Alimentação Sustentável</h3>
+                <ul>
+                    <li>Reduza o consumo de carne</li>
+                    <li>Compre alimentos locais</li>
+                    <li>Evite desperdício de comida</li>
+                    <li>Plante sua própria horta</li>
+                </ul>
+            </article>
+
+            <article class="pratica-card">
+                <div class="pratica-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <h3>Mobilidade Sustentável</h3>
+                <ul>
+                    <li>Use transporte público</li>
+                    <li>Ande de bicicleta</li>
+                    <li>Faça caronas solidárias</li>
+                    <li>Prefira caminhar para curtas distâncias</li>
+                </ul>
+            </article>
+
+            <article class="pratica-card">
+                <div class="pratica-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3>Casa Sustentável</h3>
+                <ul>
+                    <li>Separe o lixo para reciclagem</li>
+                    <li>Use produtos de limpeza ecológicos</li>
+                    <li>Plante árvores no jardim</li>
+                    <li>Instale sistemas de energia solar</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="calculadora-impacto">
+            <h2><i class="fas fa-calculator"></i> Calcule seu Impacto</h2>
+            <p>Descubra quantas árvores você pode salvar com suas ações sustentáveis.</p>
+            
+            <div class="calculadora-form">
+                <div class="form-group">
+                    <label>Quantos banhos você toma por semana?</label>
+                    <input type="number" id="banhos" min="0" max="20" value="7">
+                </div>
+                
+                <div class="form-group">
+                    <label>Quantas sacolas plásticas você evita por semana?</label>
+                    <input type="number" id="sacolas" min="0" max="50" value="5">
+                </div>
+                
+                <div class="form-group">
+                    <label>Quantos km você deixa de andar de carro por semana?</label>
+                    <input type="number" id="km-carro" min="0" max="500" value="20">
+                </div>
+                
+                <button id="calcular-impacto" class="btn-primary">Calcular Meu Impacto</button>
+            </div>
+            
+            <div id="resultado-impacto" class="resultado-impacto hidden">
+                <h3>Seu impacto positivo:</h3>
+                <div class="resultado-item">
+                    <i class="fas fa-tree"></i>
+                    <span id="arvores-salvas">0</span> árvores salvas por ano
+                </div>
+                <div class="resultado-item">
+                    <i class="fas fa-tint"></i>
+                    <span id="agua-economizada">0</span> litros de água economizados
+                </div>
+                <div class="resultado-item">
+                    <i class="fas fa-cloud"></i>
+                    <span id="co2-evitado">0</span> kg de CO² evitados
+                </div>
+                <p class="parabens">Parabéns! Continue fazendo a diferença!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-leaf"></i> EcoConsciente</h3>
+                <p>Promovendo a sustentabilidade e consciência ambiental através da educação e ação.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="praticas.html">Práticas Sustentáveis</a></li>
+                    <li><a href="reciclagem.html">Guia de Reciclagem</a></li>
+                    <li><a href="clima.html">Mudanças Climáticas</a></li>
+                    <li><a href="login.html">Área do Usuário</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 EcoConsciente - Todos os direitos reservados | Projeto Acadêmico - 5º Período ADS</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Calculadora de impacto
+        document.addEventListener('DOMContentLoaded', function() {
+            const calcularBtn = document.getElementById('calcular-impacto');
+            
+            if (calcularBtn) {
+                calcularBtn.addEventListener('click', function() {
+                    const banhos = parseInt(document.getElementById('banhos').value) || 0;
+                    const sacolas = parseInt(document.getElementById('sacolas').value) || 0;
+                    const kmCarro = parseInt(document.getElementById('km-carro').value) || 0;
+                    
+                    // Cálculos aproximados
+                    const aguaEconomizada = banhos * 50 * 52; // 50 litros por banho mais curto
+                    const arvoresSalvas = Math.floor(sacolas * 0.1 * 52); // 10 sacolas = 1 árvore
+                    const co2Evitado = kmCarro * 0.12 * 52; // 0.12 kg CO2 por km
+                    
+                    // Atualizar resultados
+                    document.getElementById('agua-economizada').textContent = aguaEconomizada.toLocaleString();
+                    document.getElementById('arvores-salvas').textContent = arvoresSalvas;
+                    document.getElementById('co2-evitado').textContent = co2Evitado.toFixed(1);
+                    
+                    // Mostrar resultados
+                    document.getElementById('resultado-impacto').classList.remove('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
