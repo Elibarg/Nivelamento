@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudanças Climáticas - EcoConsciente</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/extras.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoConsciente</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="praticas.html"><i class="fas fa-recycle"></i> Práticas</a></li>
+                <li><a href="reciclagem.html"><i class="fas fa-trash-alt"></i> Reciclagem</a></li>
+                <li><a href="clima.html" class="active"><i class="fas fa-cloud-sun"></i> Clima</a></li>
+                <li><a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1><i class="fas fa-globe-americas"></i> Mudanças Climáticas</h1>
+            <p>Entenda as causas, consequências e soluções para o maior desafio ambiental do nosso tempo.</p>
+        </section>
+
+        <section class="clima-intro">
+            <div class="intro-video">
+                <iframe src="https://www.youtube.com/embed/G4H1N_yXBiA" title="Mudanças Climáticas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="intro-text">
+                <h2>O que são Mudanças Climáticas?</h2>
+                <p>As mudanças climáticas referem-se a alterações significativas e duradouras nos padrões climáticos da Terra. Embora mudanças naturais sempre tenham ocorrido, as atividades humanas têm acelerado esse processo de forma alarmante.</p>
+                <p>O aumento da concentração de gases de efeito estufa na atmosfera, principalmente devido à queima de combustíveis fósseis, desmatamento e atividades industriais, está causando o aquecimento global e alterando o clima em todo o planeta.</p>
+            </div>
+        </section>
+
+        <section class="causas-clima">
+            <h2><i class="fas fa-industry"></i> Principais Causas</h2>
+            
+            <div class="causas-grid">
+                <div class="causa-card">
+                    <div class="causa-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Transporte</h3>
+                    <p>Veículos movidos a combustíveis fósseis são responsáveis por cerca de 14% das emissões globais de gases de efeito estufa.</p>
+                </div>
+                
+                <div class="causa-card">
+                    <div class="causa-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Indústria</h3>
+                    <p>Processos industriais e manufatura respondem por aproximadamente 21% das emissões globais.</p>
+                </div>
+                
+                <div class="causa-card">
+                    <div class="causa-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>Desmatamento</h3>
+                    <p>A destruição de florestas remove sumidouros de carbono e libera CO₂ armazenado, contribuindo com 10% das emissões.</p>
+                </div>
+                
+                <div class="causa-card">
+                    <div class="causa-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Edificações</h3>
+                    <p>Uso de energia em residências e edifícios comerciais representa cerca de 6% das emissões globais.</p>
+                </div>
+                
+                <div class="causa-card">
+                    <div class="causa-icon">
+                        <i class="fas fa-hamburger"></i>
+                    </div>
+                    <h3>Agricultura</h3>
+                    <p>Atividades agrícolas, especialmente pecuária, são responsáveis por aproximadamente 24% das emissões.</p>
+                </div>
+                
+                <div class="causa-card">
+                    <div class="causa-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Produção de Energia</h3>
+                    <p>Geração de eletricidade a partir de combustíveis fósseis é a maior fonte individual de emissões (25%).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="graficos-clima">
+            <h2><i class="fas fa-chart-line"></i> Dados e Estatísticas</h2>
+            
+            <div class="graficos-container">
+                <div class="grafico-item">
+                    <h3>Concentração de CO₂ na Atmosfera (ppm)</h3>
+                    <canvas id="co2Chart"></canvas>
+                    <p class="grafico-legenda">A concentração de CO₂ aumentou mais de 45% desde a revolução industrial.</p>
+                </div>
+                
+                <div class="grafico-item">
+                    <h3>Aumento da Temperatura Global (°C)</h3>
+                    <canvas id="tempChart"></canvas>
+                    <p class="grafico-legenda">A temperatura média já aumentou 1.1°C em relação aos níveis pré-industriais.</p>
+                </div>
+            </div>
+            
+            <div class="impactos-visuais">
+                <h3>Impactos Visíveis das Mudanças Climáticas</h3>
+                <div class="impactos-grid">
+                    <div class="impacto-item">
+                        <img src="https://placehold.co/300x200/2e7d32/ffffff?text=Derretimento+de+Geleiras" alt="Derretimento de geleiras">
+                        <h4>Derretimento de Geleiras</h4>
+                        <p>Nível do mar subiu 20 cm desde 1900, ameaçando cidades costeiras.</p>
+                    </div>
+                    <div class="impacto-item">
+                        <img src="https://placehold.co/300x200/2e7d32/ffffff?text=Eventos+Climáticos+Extremos" alt="Eventos climáticos extremos">
+                        <h4>Eventos Extremos</h4>
+                        <p>Furacões, secas e inundações mais intensos e frequentes.</p>
+                    </div>
+                    <div class="impacto-item">
+                        <img src="https://placehold.co/300x200/2e7d32/ffffff?text=Perda+de+Biodiversidade" alt="Perda de biodiversidade">
+                        <h4>Perda de Biodiversidade</h4>
+                        <p>Espécies não conseguem se adaptar às mudanças rápidas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="acoes-clima">
+            <h2><i class="fas fa-hands-helping"></i> O que Podemos Fazer?</h2>
+            <p>Cada ação conta na luta contra as mudanças climáticas. Comece hoje mesmo:</p>
+            
+            <div class="acoes-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>Reduza seu Consumo de Energia</h3>
+                        <p>Troque para lâmpadas LED, desligue aparelhos em standby, use ar condicionado com moderação.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>Mude seus Hábitos de Transporte</h3>
+                        <p>Use transporte público, bicicleta ou caminhe. Considere veículos elétricos ou híbridos.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>Adote uma Alimentação Sustentável</h3>
+                        <p>Reduza o consumo de carne, compre produtos locais e evite o desperdício de alimentos.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3>Consuma com Consciência</h3>
+                        <p>Compre apenas o necessário, opte por produtos duráveis e repare em vez de substituir.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h3>Exerça sua Cidadania</h3>
+                        <p>Vote em políticos com propostas ambientais, participe de mobilizações, eduque outras pessoas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="compromisso-clima">
+                <h3><i class="fas fa-handshake"></i> Assine o Compromisso Climático</h3>
+                <p>Junte-se a milhares de pessoas que estão tomando atitude contra as mudanças climáticas:</p>
+                
+                <form id="compromisso-form">
+                    <div class="form-group">
+                        <label for="nome-compromisso">Seu Nome:</label>
+                        <input type="text" id="nome-compromisso" placeholder="Digite seu nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email-compromisso">Seu E-mail:</label>
+                        <input type="email" id="email-compromisso" placeholder="seu@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="compromisso">Seu Compromisso:</label>
+                        <select id="compromisso" required>
+                            <option value="">Escolha uma ação</option>
+                            <option value="reduzir-carne">Reduzir consumo de carne</option>
+                            <option value="transporte-sustentavel">Usar transporte sustentável</option>
+                            <option value="energia-renovavel">Trocar para energia renovável</option>
+                            <option value="consumo-consciente">Consumir de forma consciente</option>
+                            <option value="outro">Outro compromisso</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="outro-compromisso" class="hidden">Especifique seu compromisso:</label>
+                        <input type="text" id="outro-compromisso" placeholder="Descreva seu compromisso" class="hidden">
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-signature"></i> Assinar Compromisso
+                    </button>
+                </form>
+                
+                <div id="contador-compromissos">
+                    <p><strong><span id="total-compromissos">1,247</span> pessoas</strong> já assinaram o compromisso climático!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="noticias-clima">
+            <h2><i class="fas fa-newspaper"></i> Notícias e Atualizações</h2>
+            
+            <div class="noticias-grid">
+                <article class="noticia-card">
+                    <div class="noticia-data">15 FEV 2026</div>
+                    <h3>Novo Recorde de Temperatura no Ártico</h3>
+                    <p>Registrada a temperatura mais alta já medida no círculo polar ártico durante o inverno.</p>
+                    <a href="#" class="btn-secondary">Leia mais</a>
+                </article>
+                
+                <article class="noticia-card">
+                    <div class="noticia-data">10 FEV 2026</div>
+                    <h3>Brasil Anuncia Meta de Carbono Neutro</h3>
+                    <p>Governo brasileiro estabelece meta de neutralidade de carbono até 2050.</p>
+                    <a href="#" class="btn-secondary">Leia mais</a>
+                </article>
+                
+                <article class="noticia-card">
+                    <div class="noticia-data">05 FEV 2026</div>
+                    <h3>Energia Solar Cresce 40% no Mundo</h3>
+                    <p>Novo relatório mostra crescimento recorde na instalação de painéis solares.</p>
+                    <a href="#" class="btn-secondary">Leia mais</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-leaf"></i> EcoConsciente</h3>
+                <p>Promovendo a sustentabilidade e consciência ambiental através da educação e ação.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="praticas.html">Práticas Sustentáveis</a></li>
+                    <li><a href="reciclagem.html">Guia de Reciclagem</a></li>
+                    <li><a href="clima.html">Mudanças Climáticas</a></li>
+                    <li><a href="login.html">Área do Usuário</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 EcoConsciente - Todos os direitos reservados | Projeto Acadêmico - 5º Período ADS</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/clima.js"></script>
+</body>
+</html>

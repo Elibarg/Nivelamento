@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Reciclagem - EcoConsciente</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/extras.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoConsciente</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="praticas.html"><i class="fas fa-recycle"></i> Práticas</a></li>
+                <li><a href="reciclagem.html" class="active"><i class="fas fa-trash-alt"></i> Reciclagem</a></li>
+                <li><a href="clima.html"><i class="fas fa-cloud-sun"></i> Clima</a></li>
+                <li><a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1><i class="fas fa-recycle"></i> Guia Completo de Reciclagem</h1>
+            <p>Aprenda a separar corretamente seus resíduos e contribua para a economia circular.</p>
+        </section>
+
+        <section class="reciclagem-intro">
+            <div class="intro-content">
+                <h2>Por que reciclar é importante?</h2>
+                <p>A reciclagem é essencial para preservar recursos naturais, reduzir a poluição, economizar energia e diminuir a quantidade de lixo nos aterros sanitários. Cada material reciclado pode ter um novo ciclo de vida útil.</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i class="fas fa-tree"></i>
+                        <h3>1 tonelada de papel reciclado</h3>
+                        <p>Salva ≈ 20 árvores</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-tint"></i>
+                        <h3>Reciclar 1 lata de alumínio</h3>
+                        <p>Economiza energia para uma TV por 3 horas</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-industry"></i>
+                        <h3>Plástico reciclado</h3>
+                        <p>Reduz 70% do consumo de energia</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cores-coleta">
+            <h2><i class="fas fa-palette"></i> Cores da Coleta Seletiva</h2>
+            <p>Cada cor representa um tipo de material para facilitar a separação:</p>
+            
+            <div class="cores-container">
+                <div class="cor-item" style="background-color: #FFEB3B;">
+                    <h3>Amarelo</h3>
+                    <p><strong>Metais</strong><br>Latas, alumínio, aço</p>
+                </div>
+                <div class="cor-item" style="background-color: #2196F3;">
+                    <h3>Azul</h3>
+                    <p><strong>Papel e Papelão</strong><br>Jornais, revistas, caixas</p>
+                </div>
+                <div class="cor-item" style="background-color: #4CAF50;">
+                    <h3>Verde</h3>
+                    <p><strong>Vidro</strong><br>Garrafas, potes, frascos</p>
+                </div>
+                <div class="cor-item" style="background-color: #F44336;">
+                    <h3>Vermelho</h3>
+                    <p><strong>Plástico</strong><br>Garrafas PET, embalagens</p>
+                </div>
+                <div class="cor-item" style="background-color: #795548;">
+                    <h3>Marrom</h3>
+                    <p><strong>Orgânico</strong><br>Restos de alimentos</p>
+                </div>
+                <div class="cor-item" style="background-color: #000000;">
+                    <h3>Preto</h3>
+                    <p style="color: white;"><strong>Madeira</strong><br>Móveis, pallets</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="materiais-detalhados">
+            <h2><i class="fas fa-list-alt"></i> Como Separar Corretamente</h2>
+            
+            <div class="materiais-tabs">
+                <button class="tab-btn active" data-tab="plastico">Plástico</button>
+                <button class="tab-btn" data-tab="vidro">Vidro</button>
+                <button class="tab-btn" data-tab="papel">Papel</button>
+                <button class="tab-btn" data-tab="metal">Metal</button>
+                <button class="tab-btn" data-tab="organico">Orgânico</button>
+            </div>
+            
+            <div class="tab-content active" id="plastico">
+                <div class="material-content">
+                    <div class="material-info">
+                        <h3><i class="fas fa-recycle"></i> Plástico</h3>
+                        <p><strong>O que reciclar:</strong></p>
+                        <ul>
+                            <li>Garrafas PET (refrigerante, água, óleo)</li>
+                            <li>Embalagens de produtos de limpeza</li>
+                            <li>Sacos e sacolas plásticas limpas</li>
+                            <li>Copos e pratos descartáveis</li>
+                            <li>Brinquedos de plástico</li>
+                        </ul>
+                        <p><strong>Não reciclar:</strong></p>
+                        <ul>
+                            <li>Plásticos sujos ou engordurados</li>
+                            <li>Embalagens metalizadas (como salgadinhos)</li>
+                            <li>Cabos de panela</li>
+                            <li>Espuma (como isopor)</li>
+                        </ul>
+                        <p><strong>Dica:</strong> Lave as embalagens antes de descartar para facilitar a reciclagem.</p>
+                    </div>
+                    <div class="material-image">
+                        <img src="https://placehold.co/400x300/2e7d32/ffffff?text=Plástico+Reciclável" alt="Plásticos recicláveis">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="vidro">
+                <div class="material-content">
+                    <div class="material-info">
+                        <h3><i class="fas fa-wine-bottle"></i> Vidro</h3>
+                        <p><strong>O que reciclar:</strong></p>
+                        <ul>
+                            <li>Garrafas de bebidas</li>
+                            <li>Potes de alimentos</li>
+                            <li>Frascos de medicamentos (limpos)</li>
+                            <li>Copos e taças (sem ser cristal)</li>
+                        </ul>
+                        <p><strong>Não reciclar:</strong></p>
+                        <ul>
+                            <li>Espelhos</li>
+                            <li>Vidros temperados (de carro)</li>
+                            <li>Louças e porcelanas</li>
+                            <li>Lâmpadas fluorescentes</li>
+                            <li>Tubos de TV</li>
+                        </ul>
+                        <p><strong>Dica:</strong> Separe por cor (transparente, verde, marrom) quando possível.</p>
+                    </div>
+                    <div class="material-image">
+                        <img src="https://placehold.co/400x300/2e7d32/ffffff?text=Vidro+Reciclável" alt="Vidros recicláveis">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="papel">
+                <div class="material-content">
+                    <div class="material-info">
+                        <h3><i class="fas fa-file-alt"></i> Papel e Papelão</h3>
+                        <p><strong>O que reciclar:</strong></p>
+                        <ul>
+                            <li>Jornais e revistas</li>
+                            <li>Caixas de papelão</li>
+                            <li>Papel de escritório</li>
+                            <li>Cadernos (sem espiral)</li>
+                            <li>Sacos de papel</li>
+                        </ul>
+                        <p><strong>Não reciclar:</strong></p>
+                        <ul>
+                            <li>Papel higiênico usado</li>
+                            <li>Guardanapos sujos</li>
+                            <li>Papel plastificado</li>
+                            <li>Papel carbono</li>
+                            <li>Fitas adesivas</li>
+                        </ul>
+                        <p><strong>Dica:</strong> Amasse as caixas para ocupar menos espaço.</p>
+                    </div>
+                    <div class="material-image">
+                        <img src="https://placehold.co/400x300/2e7d32/ffffff?text=Papel+Reciclável" alt="Papéis recicláveis">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="metal">
+                <div class="material-content">
+                    <div class="material-info">
+                        <h3><i class="fas fa-cogs"></i> Metal</h3>
+                        <p><strong>O que reciclar:</strong></p>
+                        <ul>
+                            <li>Latas de alumínio (refrigerante, cerveja)</li>
+                            <li>Latas de aço (conservas, enlatados)</li>
+                            <li>Tampas de metal</li>
+                            <li>Panelas velhas</li>
+                            <li>Arames e pregos</li>
+                        </ul>
+                        <p><strong>Não reciclar:</strong></p>
+                        <ul>
+                            <li>Latas de tinta ou produtos químicos</li>
+                            <li>Latas com resíduos perigosos</li>
+                            <li>Clipes e grampos</li>
+                            <li>Aerossóis (sprays)</li>
+                        </ul>
+                        <p><strong>Dica:</strong> Amasse as latas para economizar espaço no saco.</p>
+                    </div>
+                    <div class="material-image">
+                        <img src="https://placehold.co/400x300/2e7d32/ffffff?text=Metal+Reciclável" alt="Metais recicláveis">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="organico">
+                <div class="material-content">
+                    <div class="material-info">
+                        <h3><i class="fas fa-apple-alt"></i> Resíduos Orgânicos</h3>
+                        <p><strong>O que compostar:</strong></p>
+                        <ul>
+                            <li>Cascas de frutas e legumes</li>
+                            <li>Restos de alimentos crus</li>
+                            <li>Borras de café e chá</li>
+                            <li>Cascas de ovos</li>
+                            <li>Folhas secas e grama</li>
+                        </ul>
+                        <p><strong>Não compostar:</strong></p>
+                        <ul>
+                            <li>Carnes e laticínios</li>
+                            <li>Óleos e gorduras</li>
+                            <li>Alimentos cozidos com sal</li>
+                            <li>Fezes de animais</li>
+                            <li>Plantas doentes</li>
+                        </ul>
+                        <p><strong>Dica:</strong> Faça compostagem doméstica para adubar suas plantas.</p>
+                    </div>
+                    <div class="material-image">
+                        <img src="https://placehold.co/400x300/2e7d32/ffffff?text=Compostagem" alt="Compostagem orgânica">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quiz-reciclagem">
+            <h2><i class="fas fa-question-circle"></i> Teste seu Conhecimento</h2>
+            <p>Responda ao quiz e descubra se você é um mestre da reciclagem!</p>
+            
+            <div class="quiz-container">
+                <div class="quiz-question active" id="q1">
+                    <h3>Pergunta 1: Onde devo descartar uma garrafa PET de refrigerante?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-correct="true">Lixeira vermelha (plástico)</button>
+                        <button class="quiz-option">Lixeira azul (papel)</button>
+                        <button class="quiz-option">Lixeira verde (vidro)</button>
+                        <button class="quiz-option">Lixeira comum (indiferenciada)</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-question" id="q2">
+                    <h3>Pergunta 2: Latas de alumínio devem ser amassadas antes do descarte?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-correct="true">Sim, para economizar espaço</button>
+                        <button class="quiz-option">Não, dificulta a reciclagem</button>
+                        <button class="quiz-option">Depende do tipo de lata</button>
+                        <button class="quiz-option">Não faz diferença</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-question" id="q3">
+                    <h3>Pergunta 3: Copos descartáveis de café devem ir na reciclagem?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option">Sim, sempre</button>
+                        <button class="quiz-option">Não, nunca são recicláveis</button>
+                        <button class="quiz-option" data-correct="true">Depende do material (verifique o símbolo)</button>
+                        <button class="quiz-option">Apenas se estiverem limpos</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-results hidden">
+                    <h3>Resultado do Quiz</h3>
+                    <div class="score-display">
+                        <p>Sua pontuação: <span id="quiz-score">0</span>/3</p>
+                        <p id="quiz-message"></p>
+                    </div>
+                    <button id="restart-quiz" class="btn-primary">Refazer Quiz</button>
+                </div>
+                
+                <div class="quiz-navigation">
+                    <button id="prev-question" class="btn-secondary" disabled>Anterior</button>
+                    <button id="next-question" class="btn-primary">Próxima</button>
+                    <button id="submit-quiz" class="btn-primary hidden">Ver Resultado</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="local-coleta">
+            <h2><i class="fas fa-map-marker-alt"></i> Encontre Pontos de Coleta</h2>
+            <p>Encontre os locais de coleta seletiva mais próximos de você:</p>
+            
+            <div class="coleta-form">
+                <div class="form-group">
+                    <label for="cep">Digite seu CEP:</label>
+                    <input type="text" id="cep" placeholder="00000-000" maxlength="9">
+                    <div class="error-message" id="cep-error"></div>
+                </div>
+                <button id="buscar-coleta" class="btn-primary">
+                    <i class="fas fa-search"></i> Buscar Pontos de Coleta
+                </button>
+            </div>
+            
+            <div id="resultados-coleta" class="resultados-coleta hidden">
+                <h3>Pontos de Coleta Próximos:</h3>
+                <div class="pontos-lista">
+                    <!-- Resultados serão inseridos aqui via JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-leaf"></i> EcoConsciente</h3>
+                <p>Promovendo a sustentabilidade e consciência ambiental através da educação e ação.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="praticas.html">Práticas Sustentáveis</a></li>
+                    <li><a href="reciclagem.html">Guia de Reciclagem</a></li>
+                    <li><a href="clima.html">Mudanças Climáticas</a></li>
+                    <li><a href="login.html">Área do Usuário</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 EcoConsciente - Todos os direitos reservados | Projeto Acadêmico - 5º Período ADS</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/reciclagem.js"></script>
+</body>
+</html>

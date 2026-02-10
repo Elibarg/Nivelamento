@@ -1,0 +1,701 @@
+/* Estilos para página de Reciclagem */
+
+.reciclagem-intro {
+    background-color: var(--cinza-claro);
+    padding: 3rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+.reciclagem-intro h2 {
+    color: var(--verde-escuro);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    background-color: var(--branco);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: var(--sombra);
+}
+
+.stat-item i {
+    font-size: 2.5rem;
+    color: var(--verde-claro);
+    margin-bottom: 1rem;
+}
+
+.stat-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--marrom);
+}
+
+.cores-coleta {
+    margin: 3rem 0;
+}
+
+.cores-coleta h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cores-coleta h2 i {
+    margin-right: 10px;
+}
+
+.cores-coleta p {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--cinza-escuro);
+}
+
+.cores-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.cor-item {
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--cinza-escuro);
+    transition: var(--transicao);
+    cursor: pointer;
+}
+
+.cor-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cor-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.materiais-detalhados {
+    margin: 3rem 0;
+}
+
+.materiais-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    background-color: var(--cinza-claro);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transicao);
+}
+
+.tab-btn:hover {
+    background-color: var(--verde-claro);
+    color: var(--branco);
+}
+
+.tab-btn.active {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+}
+
+.tab-content {
+    display: none;
+    background-color: var(--cinza-claro);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.material-content {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.material-info {
+    flex: 2;
+}
+
+.material-image {
+    flex: 1;
+    text-align: center;
+}
+
+.material-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+}
+
+.material-info h3 {
+    color: var(--verde-escuro);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.material-info h3 i {
+    margin-right: 10px;
+}
+
+.material-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.material-info li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.quiz-reciclagem {
+    background-color: var(--verde-claro);
+    padding: 3rem;
+    border-radius: 10px;
+    margin: 3rem 0;
+    color: var(--branco);
+}
+
+.quiz-reciclagem h2 {
+    color: var(--branco);
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-reciclagem h2 i {
+    margin-right: 10px;
+}
+
+.quiz-reciclagem p {
+    text-align: center;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.quiz-question {
+    display: none;
+}
+
+.quiz-question.active {
+    display: block;
+}
+
+.quiz-question h3 {
+    color: var(--branco);
+    margin-bottom: 1.5rem;
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.quiz-option {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transicao);
+    text-align: left;
+    color: var(--cinza-escuro);
+}
+
+.quiz-option:hover {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+}
+
+.quiz-option.correct {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.quiz-option.incorrect {
+    background-color: #F44336;
+    color: white;
+}
+
+.quiz-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.quiz-results {
+    text-align: center;
+    padding: 2rem;
+}
+
+.score-display {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+#quiz-score {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--branco);
+}
+
+.local-coleta {
+    margin: 3rem 0;
+    padding: 2rem;
+    background-color: var(--cinza-claro);
+    border-radius: 10px;
+}
+
+.local-coleta h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.local-coleta h2 i {
+    margin-right: 10px;
+}
+
+.coleta-form {
+    max-width: 500px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.coleta-form .form-group {
+    text-align: left;
+}
+
+.resultados-coleta {
+    margin-top: 2rem;
+}
+
+.pontos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.ponto-item {
+    background-color: var(--branco);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+}
+
+/* Estilos para página de Clima */
+
+.clima-intro {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.intro-video {
+    flex: 1;
+    min-width: 300px;
+}
+
+.intro-video iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.intro-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.intro-text h2 {
+    color: var(--verde-escuro);
+    margin-bottom: 1rem;
+}
+
+.causas-clima {
+    margin: 3rem 0;
+}
+
+.causas-clima h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.causas-clima h2 i {
+    margin-right: 10px;
+}
+
+.causas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.causa-card {
+    background-color: var(--branco);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+    text-align: center;
+    transition: var(--transicao);
+}
+
+.causa-card:hover {
+    transform: translateY(-5px);
+}
+
+.causa-icon {
+    font-size: 3rem;
+    color: var(--verde-escuro);
+    margin-bottom: 1rem;
+}
+
+.causa-card h3 {
+    color: var(--marrom);
+    margin-bottom: 1rem;
+}
+
+.graficos-clima {
+    margin: 3rem 0;
+    padding: 3rem 0;
+    background-color: var(--cinza-claro);
+    border-radius: 10px;
+}
+
+.graficos-clima h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.graficos-clima h2 i {
+    margin-right: 10px;
+}
+
+.graficos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.grafico-item {
+    background-color: var(--branco);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+}
+
+.grafico-item h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--verde-escuro);
+}
+
+.grafico-legenda {
+    text-align: center;
+    font-style: italic;
+    margin-top: 1rem;
+    color: var(--cinza-escuro);
+}
+
+.impactos-visuais {
+    margin-top: 3rem;
+}
+
+.impactos-visuais h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--verde-escuro);
+}
+
+.impactos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.impacto-item {
+    background-color: var(--branco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+.impacto-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.impacto-item h4 {
+    padding: 1rem 1rem 0.5rem;
+    color: var(--verde-escuro);
+}
+
+.impacto-item p {
+    padding: 0 1rem 1rem;
+    color: var(--cinza-escuro);
+}
+
+.acoes-clima {
+    margin: 3rem 0;
+}
+
+.acoes-clima h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acoes-clima h2 i {
+    margin-right: 10px;
+}
+
+.acoes-clima > p {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--cinza-escuro);
+}
+
+.acoes-timeline {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    position: relative;
+}
+
+.acoes-timeline:before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: var(--verde-claro);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.timeline-number {
+    width: 60px;
+    height: 60px;
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 2rem;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.timeline-content {
+    flex: 1;
+    background-color: var(--branco);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+}
+
+.timeline-content h3 {
+    color: var(--verde-escuro);
+    margin-bottom: 0.5rem;
+}
+
+.compromisso-clima {
+    background-color: var(--verde-claro);
+    padding: 3rem;
+    border-radius: 10px;
+    color: var(--branco);
+}
+
+.compromisso-clima h3 {
+    color: var(--branco);
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.compromisso-clima h3 i {
+    margin-right: 10px;
+}
+
+.compromisso-clima > p {
+    text-align: center;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+#compromisso-form {
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+#compromisso-form .form-group label {
+    color: var(--branco);
+}
+
+#contador-compromissos {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+}
+
+#total-compromissos {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.noticias-clima {
+    margin: 3rem 0;
+}
+
+.noticias-clima h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.noticias-clima h2 i {
+    margin-right: 10px;
+}
+
+.noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.noticia-card {
+    background-color: var(--branco);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+    transition: var(--transicao);
+}
+
+.noticia-card:hover {
+    transform: translateY(-5px);
+}
+
+.noticia-data {
+    color: var(--verde-claro);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.noticia-card h3 {
+    color: var(--verde-escuro);
+    margin-bottom: 1rem;
+}
+
+.noticia-card p {
+    color: var(--cinza-escuro);
+    margin-bottom: 1.5rem;
+}
+
+/* Responsividade adicional */
+@media screen and (max-width: 768px) {
+    .material-content {
+        flex-direction: column;
+    }
+    
+    .quiz-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .graficos-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .acoes-timeline:before {
+        left: 25px;
+    }
+    
+    .timeline-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cores-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .materiais-tabs {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
