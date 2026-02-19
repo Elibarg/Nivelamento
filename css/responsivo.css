@@ -1,116 +1,178 @@
-/* ===== SUMÁRIO responsivo.css =====
- * 1. TABLET (max-width: 1024px)
- * 2. CELULAR (max-width: 768px)
- * 3. CELULAR PEQUENO (max-width: 480px)
- * ================================== */
- 
-/* Tablet (até 1024px) */
+/* ============================================================
+   SUMÁRIO responsivo.css
+   ------------------------------------------------------------
+   1. TABLET (max-width: 1024px)
+   2. CELULAR (max-width: 768px)
+   3. CELULAR PEQUENO (max-width: 480px)
+   ============================================================ */
+
+/* ===== 1. TABLET (max-width: 1024px) ===== */
+/*
+   Objetivo: Ajustar o layout para tablets e telas médias (entre 769px e 1024px).
+   Por que este breakpoint? Porque a partir de 1024px, alguns elementos começam a ficar
+   apertados ou com espaçamento excessivo. Aqui reorganizamos o conteúdo para melhor legibilidade.
+
+   Principais alterações:
+   - Hero section: muda de linha para coluna, empilhando conteúdo e imagem.
+   - Vídeo: descrição fica abaixo do vídeo (coluna).
+   - Login: caixa de login e informações também empilhadas.
+   - Ajustes de tamanho de fonte e padding.
+*/
 @media screen and (max-width: 1024px) {
     .hero {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column; /* Muda de linha para coluna */
+        text-align: center;     /* Centraliza o texto */
     }
+    
     .hero-content {
-        padding-right: 0;
-        margin-bottom: 2rem;
+        padding-right: 0;       /* Remove o padding direito que existia em desktop */
+        margin-bottom: 2rem;    /* Espaço entre conteúdo e imagem */
     }
+    
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2.5rem;      /* Reduz ligeiramente o título */
     }
+    
     .video-container {
-        flex-direction: column;
+        flex-direction: column; /* Vídeo em cima, descrição embaixo */
     }
+    
     .login-container {
-        flex-direction: column;
+        flex-direction: column; /* Caixa de login e painel informativo empilhados */
     }
+    
     .login-box {
-        max-width: 100%;
-        margin-right: 0;
-        margin-bottom: 2rem;
+        max-width: 100%;        /* Ocupa toda a largura disponível */
+        margin-right: 0;        /* Remove margem direita */
+        margin-bottom: 2rem;    /* Espaço antes do painel */
     }
 }
 
-/* Celular (até 768px) */
+/* ===== 2. CELULAR (max-width: 768px) ===== */
+/*
+   Objetivo: Layout para smartphones em modo retrato e paisagem pequena.
+   Este é o breakpoint mais crítico, onde o menu se transforma em hamburguer
+   e muitos elementos passam a ocupar 100% da largura.
+
+   Principais alterações:
+   - Menu hamburguer aparece (display: block).
+   - O menu de navegação vira um painel fixo que desliza da esquerda.
+   - Cards em grid passam a ter uma coluna.
+   - Rodapé também uma coluna.
+   - Redução adicional de tamanhos de fonte e padding.
+*/
 @media screen and (max-width: 768px) {
     .hamburger {
-        display: block;
+        display: block; /* Exibe o ícone do menu hamburguer */
     }
-    /* Animação do hamburguer quando ativo */
+    
+    /* Animação do hamburguer quando ativo: transforma os três traços em um "X" */
     .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
+        opacity: 0; /* Esconde a barra do meio */
     }
+    
     .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg); /* Gira o primeiro traço */
     }
+    
     .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg); /* Gira o terceiro traço */
     }
-    /* Menu que surge da esquerda */
+    
+    /* Menu que desliza da esquerda */
     .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
+        position: fixed;        /* Fixo na tela */
+        left: -100%;            /* Escondido fora da tela (à esquerda) */
+        top: 70px;              /* Abaixo do cabeçalho (altura aproximada da navbar) */
+        flex-direction: column; /* Itens em coluna */
         background-color: var(--branco);
-        width: 100%;
+        width: 100%;            /* Largura total */
         text-align: center;
-        transition: var(--transicao);
+        transition: var(--transicao); /* Animação suave ao abrir/fechar */
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         padding: 2rem 0;
         z-index: 999;
     }
+    
     .nav-menu.active {
-        left: 0;
+        left: 0; /* Quando ativo, entra na tela */
     }
+    
     .nav-menu li {
-        margin: 1.5rem 0;
+        margin: 1.5rem 0; /* Espaçamento vertical entre os links */
     }
+    
+    /* Ajustes de texto */
     .hero-content h1 {
         font-size: 2rem;
     }
+    
     .destaques h2,
     .video-section h2 {
         font-size: 2rem;
     }
+    
+    /* Cards em uma coluna */
     .cards-container {
         grid-template-columns: 1fr;
     }
+    
+    /* Rodapé em uma coluna */
     .footer-content {
         grid-template-columns: 1fr;
     }
+    
+    /* Redução de padding nas caixas de login */
     .login-box,
     .login-info {
         padding: 2rem;
     }
 }
 
-/* Celular pequeno (até 480px) */
+/* ===== 3. CELULAR PEQUENO (max-width: 480px) ===== */
+/*
+   Objetivo: Ajustes finos para smartphones muito pequenos (ex: iPhone SE, celulares antigos).
+   Reduzimos ainda mais fontes, paddings e reorganizamos alguns elementos como as opções de formulário.
+
+   Principais alterações:
+   - Padding da navbar reduzido.
+   - Tamanho da logo reduzido.
+   - Botões menores.
+   - Opções de formulário (como "Lembrar-me") empilhadas verticalmente.
+*/
 @media screen and (max-width: 480px) {
     .navbar {
-        padding: 1rem;
+        padding: 1rem; /* Reduz espaçamento interno */
     }
+    
     .logo span {
-        font-size: 1.5rem;
+        font-size: 1.5rem; /* Tamanho da logo reduzido */
     }
+    
     .hero {
-        padding: 2rem 1rem;
+        padding: 2rem 1rem; /* Menos padding vertical e horizontal */
     }
+    
     .hero-content h1 {
         font-size: 1.8rem;
     }
+    
     .destaques,
     .video-section,
     .newsletter {
-        padding: 3rem 1rem;
+        padding: 3rem 1rem; /* Redução geral de padding */
     }
+    
     .btn-primary {
-        padding: 10px 20px;
+        padding: 10px 20px; /* Botões menores */
     }
+    
     .form-options {
-        flex-direction: column;
+        flex-direction: column; /* Empilha as opções (checkbox e link) */
         align-items: flex-start;
     }
+    
     .forgot-password {
-        margin-top: 10px;
+        margin-top: 10px; /* Espaço entre os itens empilhados */
     }
 }

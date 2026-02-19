@@ -1,65 +1,78 @@
-/* ===== SUMÁRIO reciclagem.js =====
- * 1. SISTEMA DE ABAS DE MATERIAIS
- * 2. QUIZ INTERATIVO
- *    2.1 Navegação entre perguntas
- *    2.2 Registro de respostas
- *    2.3 Exibição de resultados
- * 3. BUSCA DE PONTOS DE COLETA (simulada)
- *    3.1 Validação de CEP
- *    3.2 Exibição de resultados fictícios
- * ================================= */
-
-// reciclagem.js – scripts específicos para a página de reciclagem
+/* ===========================================================
+   SUMÁRIO reciclagem.js
+   -----------------------------------------------------------
+   1. SISTEMA DE ABAS DE MATERIAIS
+   2. QUIZ INTERATIVO
+      2.1 Navegação entre perguntas
+      2.2 Registro de respostas
+      2.3 Exibição de resultados
+   3. BUSCA DE PONTOS DE COLETA (simulada)
+      3.1 Validação de CEP
+      3.2 Exibição de resultados fictícios
+   =========================================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // ---------- Sistema de abas de materiais ----------
+    /* ===== 1. SISTEMA DE ABAS DE MATERIAIS ===== */
+    /*
+       Objetivo: Permitir que o usuário navegue entre as informações de diferentes materiais recicláveis.
+       Como funciona:
+       - Seleciona todos os botões de aba e os conteúdos correspondentes.
+       - Ao clicar em um botão, remove a classe 'active' de todos e adiciona apenas no clicado.
+       - O atributo data-tab do botão contém o ID do conteúdo a ser exibido.
+       - Usamos esse ID para encontrar a div correta e adicionar a classe 'active' nela.
+       - Isso garante que apenas um conteúdo seja visível por vez.
+    */
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
     
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove a classe 'active' de todas as abas e conteúdos
             tabBtns.forEach(b => b.classList.remove('active'));
             tabContents.forEach(content => content.classList.remove('active'));
             
-            // Ativa a aba clicada
             btn.classList.add('active');
-            
-            // Mostra o conteúdo correspondente (data-tab aponta para o id do conteúdo)
             const tabId = btn.getAttribute('data-tab');
             document.getElementById(tabId).classList.add('active');
         });
     });
     
-    // ---------- Quiz interativo ----------
+    /* ===== 2. QUIZ INTERATIVO ===== */
+    /*
+       Objetivo: Testar o conhecimento do usuário sobre reciclagem de forma lúdica.
+       Estrutura:
+       - Três perguntas, cada uma com quatro opções.
+       - Apenas uma pergunta é exibida por vez.
+       - As respostas são armazenadas em um array (userAnswers) como booleanos.
+       - Navegação entre perguntas com botões "Anterior" e "Próxima".
+       - Ao final, botão "Ver Resultado" calcula a pontuação e destaca as respostas.
+    */
     const quizQuestions = document.querySelectorAll('.quiz-question');
     const prevBtn = document.getElementById('prev-question');
     const nextBtn = document.getElementById('next-question');
     const submitBtn = document.getElementById('submit-quiz');
     const restartBtn = document.getElementById('restart-quiz');
     let currentQuestion = 0;
-    let userAnswers = []; // armazena true/false para cada pergunta
+    let userAnswers = [];
     
     // Exibe a primeira pergunta
     showQuestion(currentQuestion);
     
-    // Ao clicar em uma opção de resposta
+    // Evento para as opções de resposta
     document.querySelectorAll('.quiz-option').forEach(option => {
         option.addEventListener('click', function() {
             const questionId = this.closest('.quiz-question').id;
             const questionIndex = parseInt(questionId.replace('q', '')) - 1;
             
-            // Remove seleção anterior na mesma pergunta
+            // Remove a classe 'selected' de todas as opções desta pergunta
             const questionOptions = this.parentElement.querySelectorAll('.quiz-option');
             questionOptions.forEach(opt => opt.classList.remove('selected'));
             
             // Marca a opção clicada como selecionada
             this.classList.add('selected');
             
-            // Armazena a resposta (true se for a correta, false caso contrário)
+            // Armazena se a resposta está correta (data-correct="true")
             userAnswers[questionIndex] = this.getAttribute('data-correct') === 'true';
             
-            // Atualiza navegação (pode habilitar botões se necessário)
             updateQuizNavigation();
         });
     });
@@ -100,14 +113,14 @@ document.addEventListener('DOMContentLoaded', function() {
             showQuestion(currentQuestion);
             updateQuizNavigation();
             
-            // Limpa as classes de correção e seleção
+            // Remove todas as classes de correção e seleção
             document.querySelectorAll('.quiz-option').forEach(option => {
                 option.classList.remove('selected', 'correct', 'incorrect');
             });
         });
     }
     
-    // Função para mostrar uma pergunta específica
+    // Função auxiliar para mostrar uma pergunta específica
     function showQuestion(index) {
         quizQuestions.forEach((q, i) => {
             if (i === index) {
@@ -118,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Atualiza o estado dos botões de navegação conforme a pergunta atual
+    // Atualiza o estado dos botões de navegação
     function updateQuizNavigation() {
         prevBtn.disabled = currentQuestion === 0;
         
@@ -131,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Exibe os resultados do quiz
+    // Exibe os resultados e destaca as respostas
     function showQuizResults() {
         const score = userAnswers.filter(answer => answer === true).length;
         const total = quizQuestions.length;
@@ -152,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         document.querySelector('.quiz-results').classList.remove('hidden');
         
-        // Destaca respostas corretas (verde) e incorretas selecionadas (vermelho)
+        // Destaca as respostas corretas (verde) e as incorretas selecionadas (vermelho)
         quizQuestions.forEach((question, index) => {
             const options = question.querySelectorAll('.quiz-option');
             options.forEach(option => {
@@ -165,14 +178,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ---------- Busca de pontos de coleta (simulada) ----------
+    /* ===== 3. BUSCA DE PONTOS DE COLETA (SIMULADA) ===== */
+    /*
+       Objetivo: Simular uma busca por pontos de coleta a partir de um CEP.
+       Como funciona:
+       - O usuário digita um CEP (com formatação automática).
+       - Ao clicar em "Buscar", validamos se o CEP tem 8 dígitos.
+       - Se válido, limpamos resultados anteriores e inserimos dados fictícios.
+       - A lista de pontos é gerada dinamicamente via JavaScript.
+       - Isso demonstra como seria uma integração com uma API real.
+    */
     const buscarColetaBtn = document.getElementById('buscar-coleta');
     const cepInput = document.getElementById('cep');
     const cepError = document.getElementById('cep-error');
     
     if (buscarColetaBtn) {
         buscarColetaBtn.addEventListener('click', function() {
-            const cep = cepInput.value.replace(/\D/g, ''); // remove caracteres não numéricos
+            const cep = cepInput.value.replace(/\D/g, '');
             
             if (cep.length !== 8) {
                 cepError.textContent = 'CEP inválido. Digite 8 números.';
@@ -181,11 +203,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             cepError.textContent = '';
             
-            // Simula busca de pontos (dados fictícios)
             const resultadosDiv = document.getElementById('resultados-coleta');
             const pontosLista = document.querySelector('.pontos-lista');
-            pontosLista.innerHTML = ''; // limpa resultados anteriores
+            pontosLista.innerHTML = '';
             
+            // Dados simulados (em um projeto real, viriam de uma API)
             const pontosSimulados = [
                 { nome: 'Ecoponto Centro', endereco: 'Rua das Flores, 123 - Centro', horario: 'Seg-Sex: 8h-18h, Sáb: 8h-12h', materiais: 'Papel, plástico, vidro, metal' },
                 { nome: 'Cooperativa Recicla Mais', endereco: 'Av. Principal, 456 - Bairro Novo', horario: 'Ter-Sáb: 9h-17h', materiais: 'Todos os materiais recicláveis' },
@@ -209,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Formatação do CEP enquanto digita (adiciona hífen)
+    // Formatação automática do CEP (adiciona hífen)
     cepInput.addEventListener('input', function() {
         let value = this.value.replace(/\D/g, '');
         if (value.length > 5) {

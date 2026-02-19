@@ -1,35 +1,49 @@
-/* ===== SUMÁRIO style.css =====
- * 1. RESET E VARIÁVEIS GLOBAIS
- * 2. ESTILOS GERAIS (body, container, títulos)
- * 3. NAVEGAÇÃO (navbar, logo, menu, hamburguer)
- * 4. HERO SECTION
- * 5. BOTÕES (.btn-primary, .btn-secondary)
- * 6. CARDS (destaques, cards-container, card)
- * 7. SEÇÃO DE VÍDEO
- * 8. NEWSLETTER E FORMULÁRIOS
- * 9. RODAPÉ
- * =============================== */
+/* =====================================================
+   SUMÁRIO style.css
+   -----------------------------------------------------
+   1. RESET E VARIÁVEIS GLOBAIS
+   2. ESTILOS GERAIS (body, container, títulos)
+   3. NAVEGAÇÃO (navbar, logo, menu, hamburguer)
+   4. HERO SECTION
+   5. BOTÕES (.btn-primary, .btn-secondary)
+   6. CARDS (destaques, cards-container, card)
+   7. SEÇÃO DE VÍDEO
+   8. NEWSLETTER E FORMULÁRIOS
+   9. RODAPÉ
+   ===================================================== */
 
-/* Reset básico para remover margens e paddings padrão */
+/* ===== 1. RESET E VARIÁVEIS GLOBAIS ===== */
+/*
+   Reset básico: remove margens e paddings padrão que os navegadores aplicam.
+   O box-sizing: border-box faz com que padding e bordas sejam incluídos na largura total,
+   evitando problemas de dimensionamento.
+   As variáveis CSS (custom properties) são definidas no seletor :root para que fiquem
+   disponíveis globalmente. Isso facilita a manutenção das cores do tema (Sustentabilidade),
+   permitindo alterar a paleta inteira modificando apenas esses valores.
+*/
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Inclui bordas e padding no cálculo da largura */
+    box-sizing: border-box;
 }
 
-/* Variáveis de cores do tema (Sustentabilidade) */
 :root {
-    --verde-escuro: #2e7d32;   /* Cor principal (natureza) */
-    --verde-claro: #81c784;     /* Cor de destaque (interações) */
-    --marrom: #795548;          /* Cor orgânica */
-    --branco: #ffffff;           /* Fundo e contraste */
-    --cinza-claro: #f5f5f5;      /* Fundo de seções */
-    --cinza-escuro: #333333;     /* Cor do texto principal */
-    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra padrão */
+    --verde-escuro: #2e7d32;   /* Cor principal (natureza, confiança) */
+    --verde-claro: #81c784;     /* Cor de destaque (interações, botões secundários) */
+    --marrom: #795548;          /* Cor orgânica, usada para contraste em títulos */
+    --branco: #ffffff;           /* Fundo e áreas de texto */
+    --cinza-claro: #f5f5f5;      /* Fundo de seções secundárias */
+    --cinza-escuro: #333333;     /* Cor padrão para textos */
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para elevar elementos */
     --transicao: all 0.3s ease;  /* Transição suave para efeitos hover */
 }
 
-/* Estilos gerais do body */
+/* ===== 2. ESTILOS GERAIS ===== */
+/*
+   A fonte Open Sans é usada no corpo por ser altamente legível em telas.
+   A altura de linha 1.6 melhora a legibilidade de parágrafos.
+   Títulos usam Poppins, uma fonte geométrica moderna que contrasta bem.
+*/
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
@@ -37,14 +51,17 @@ body {
     background-color: var(--branco);
 }
 
-/* Títulos com fonte Poppins e cor verde escuro */
 h1, h2, h3, h4 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: var(--verde-escuro);
 }
 
-/* Container centralizado com largura máxima */
+/* 
+   Container padrão: centraliza o conteúdo e limita a largura máxima
+   para que em telas muito grandes o texto não fique esticado.
+   Padding lateral garante espaçamento em telas pequenas.
+*/
 .container {
     width: 90%;
     max-width: 1200px;
@@ -52,7 +69,12 @@ h1, h2, h3, h4 {
     padding: 0 20px;
 }
 
-/* ---------- Navegação ---------- */
+/* ===== 3. NAVEGAÇÃO ===== */
+/*
+   A barra de navegação usa flexbox para distribuir logo e menu.
+   position: sticky faz com que o menu fique fixo no topo ao rolar a página.
+   z-index alto garante que fique acima de outros elementos.
+*/
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -60,7 +82,7 @@ h1, h2, h3, h4 {
     padding: 1.5rem 2rem;
     background-color: var(--branco);
     box-shadow: var(--sombra);
-    position: sticky; /* Fixa no topo ao rolar */
+    position: sticky;
     top: 0;
     z-index: 1000;
 }
@@ -78,6 +100,7 @@ h1, h2, h3, h4 {
     font-size: 2rem;
 }
 
+/* Menu de navegação em linha para desktop */
 .nav-menu {
     display: flex;
     list-style: none;
@@ -99,25 +122,28 @@ h1, h2, h3, h4 {
 }
 
 .nav-menu a i {
-    margin-right: 8px;
+    margin-right: 8px; /* Espaço entre ícone e texto */
 }
 
+/* Efeito hover: fundo verde claro, texto branco */
 .nav-menu a:hover {
     background-color: var(--verde-claro);
     color: var(--branco);
 }
 
+/* Classe active indica a página atual (fundo verde escuro) */
 .nav-menu a.active {
     background-color: var(--verde-escuro);
     color: var(--branco);
 }
 
+/* Botão de login tem estilo diferenciado (já verde escuro) */
 .login-btn {
     background-color: var(--verde-escuro);
     color: var(--branco) !important;
 }
 
-/* Menu hamburguer (invisível em telas grandes) */
+/* Menu hamburguer: invisível em desktop, será ativado via media query */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -132,7 +158,12 @@ h1, h2, h3, h4 {
     transition: var(--transicao);
 }
 
-/* ---------- Hero ---------- */
+/* ===== 4. HERO SECTION ===== */
+/*
+   Hero usa gradiente linear para criar uma transição suave entre as duas cores do tema.
+   Flexbox alinha o conteúdo e a imagem lado a lado.
+   Em telas menores, a imagem fica abaixo do texto (graças à responsividade).
+*/
 .hero {
     display: flex;
     align-items: center;
@@ -150,13 +181,13 @@ h1, h2, h3, h4 {
 .hero-content h1 {
     font-size: 3rem;
     margin-bottom: 1.5rem;
-    color: var(--branco);
+    color: var(--branco); /* Sobrescreve a cor padrão dos títulos */
 }
 
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    opacity: 0.9;
+    opacity: 0.9; /* Leve transparência para suavizar */
 }
 
 .hero-image {
@@ -170,7 +201,12 @@ h1, h2, h3, h4 {
     box-shadow: var(--sombra);
 }
 
-/* ---------- Botões ---------- */
+/* ===== 5. BOTÕES ===== */
+/*
+   Dois estilos de botão: primário (verde escuro) e secundário (verde claro com borda).
+   Transições suaves e elevação no hover dão feedback visual ao usuário.
+   O transform: translateY cria um efeito de "flutuar".
+*/
 .btn-primary {
     display: inline-block;
     padding: 12px 30px;
@@ -208,7 +244,12 @@ h1, h2, h3, h4 {
     color: var(--verde-claro);
 }
 
-/* ---------- Cards ---------- */
+/* ===== 6. CARDS ===== */
+/*
+   Os cards são dispostos em grid com auto-fit para se adaptarem ao espaço disponível.
+   Cada card tem um ícone grande, título e descrição.
+   O hover aumenta a sombra e eleva o card, dando destaque.
+*/
 .destaques {
     padding: 5rem 2rem;
     background-color: var(--cinza-claro);
@@ -249,7 +290,7 @@ h1, h2, h3, h4 {
 
 .card h3 {
     margin-bottom: 1rem;
-    color: var(--marrom);
+    color: var(--marrom); /* contraste com o verde */
 }
 
 .card p {
@@ -257,7 +298,13 @@ h1, h2, h3, h4 {
     color: var(--cinza-escuro);
 }
 
-/* ---------- Vídeo ---------- */
+/* ===== 7. SEÇÃO DE VÍDEO ===== */
+/*
+   O vídeo é inserido via iframe do YouTube. Para mantê-lo responsivo,
+   usamos a técnica do padding-bottom: 56.25% (proporção 16:9) no wrapper,
+   e o iframe é posicionado absolutamente dentro dele.
+   A descrição do vídeo fica ao lado em telas grandes, abaixo em telas pequenas.
+*/
 .video-section {
     padding: 5rem 2rem;
     background-color: var(--branco);
@@ -280,7 +327,7 @@ h1, h2, h3, h4 {
 .video-wrapper {
     flex: 1;
     position: relative;
-    padding-bottom: 56.25%; /* Proporção 16:9 */
+    padding-bottom: 56.25%; /* 16:9 */
     height: 0;
     overflow: hidden;
 }
@@ -303,7 +350,15 @@ h1, h2, h3, h4 {
     color: var(--verde-escuro);
 }
 
-/* ---------- Newsletter ---------- */
+/* ===== 8. NEWSLETTER E FORMULÁRIOS ===== */
+/*
+   A seção de newsletter tem fundo verde claro e formulário centralizado.
+   Os campos de input têm borda cinza que muda para verde claro quando em foco,
+   indicando ao usuário onde ele está.
+   As mensagens de erro (em vermelho) são posicionadas abaixo de cada campo,
+   com altura mínima para não "pular" a página quando aparecem.
+   A mensagem de sucesso fica oculta inicialmente e é exibida via JavaScript.
+*/
 .newsletter {
     padding: 5rem 2rem;
     background-color: var(--verde-claro);
@@ -327,7 +382,6 @@ h1, h2, h3, h4 {
     margin: 0 auto;
 }
 
-/* ---------- Formulários ---------- */
 .form-group {
     margin-bottom: 1.5rem;
     text-align: left;
@@ -360,7 +414,7 @@ h1, h2, h3, h4 {
     color: #e53935;
     font-size: 0.9rem;
     margin-top: 5px;
-    min-height: 20px;
+    min-height: 20px; /* reserva espaço para evitar mudança de layout */
 }
 
 .success-message {
@@ -369,10 +423,15 @@ h1, h2, h3, h4 {
     padding: 1rem;
     border-radius: 4px;
     margin-top: 1rem;
-    display: none;
+    display: none; /* inicialmente oculto */
 }
 
-/* ----------  ---------- */
+/* ===== 9. RODAPÉ ===== */
+/*
+   Rodapé com fundo verde escuro. Organizado em grid para seções de conteúdo.
+   Links têm efeito hover que desloca o texto ligeiramente para a direita.
+   Uma linha fina separa o conteúdo inferior.
+*/
 footer {
     background-color: var(--verde-escuro);
     color: var(--branco);
@@ -413,7 +472,7 @@ footer {
 
 .footer-section a:hover {
     color: var(--verde-claro);
-    padding-left: 5px;
+    padding-left: 5px; /* pequeno deslocamento */
 }
 
 .footer-bottom {

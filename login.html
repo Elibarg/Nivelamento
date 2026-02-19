@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - EcoConsciente</title>
+    <!-- Mesmos recursos de estilo e fontes da página inicial -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsivo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,6 +22,7 @@
                 <li><a href="praticas.html"><i class="fas fa-recycle"></i> Práticas</a></li>
                 <li><a href="reciclagem.html"><i class="fas fa-trash-alt"></i> Reciclagem</a></li>
                 <li><a href="clima.html"><i class="fas fa-cloud-sun"></i> Clima</a></li>
+                <!-- Link ativo na página de login -->
                 <li><a href="login.html" class="login-btn active"><i class="fas fa-user"></i> Login</a></li>
             </ul>
             <div class="hamburger">
@@ -31,6 +33,11 @@
         </nav>
     </header>
 
+    <!-- ================================================
+         CONTAINER PRINCIPAL DE LOGIN
+         Layout de duas colunas (caixa de formulário + informações).
+         Em telas menores, as colunas são empilhadas.
+         ============================================= -->
     <main class="login-container">
         <!-- Caixa de formulário (login e cadastro) -->
         <div class="login-box">
@@ -39,7 +46,12 @@
                 <p>Acesse sua conta para acompanhar seu progresso sustentável</p>
             </div>
             
-            <!-- Formulário de Login -->
+            <!-- ================================================
+                 FORMULÁRIO DE LOGIN
+                 - Campos: e-mail e senha.
+                 - Validação via JavaScript (main.js).
+                 - Opções "Lembrar-me" e "Esqueci minha senha" (links fictícios).
+                 ============================================= -->
             <form id="login-form">
                 <div class="form-group">
                     <label for="login-email"><i class="fas fa-envelope"></i> E-mail</label>
@@ -61,18 +73,26 @@
                 <button type="submit" class="btn-primary btn-login">
                     <i class="fas fa-sign-in-alt"></i> Entrar
                 </button>
+                <!-- Divisor "ou" -->
                 <div class="divider">
                     <span>ou</span>
                 </div>
+                <!-- Botão de login social (apenas ilustrativo) -->
                 <a href="#" class="btn-social">
                     <i class="fab fa-google"></i> Entrar com Google
                 </a>
+                <!-- Link para alternar para o formulário de cadastro -->
                 <p class="register-link">
                     Não tem uma conta? <a href="#" id="show-register">Cadastre-se aqui</a>
                 </p>
             </form>
             
-            <!-- Formulário de Cadastro (inicialmente oculto pela classe 'hidden') -->
+            <!-- ================================================
+                 FORMULÁRIO DE CADASTRO (inicialmente oculto)
+                 - Mais campos: nome, e-mail, senha, confirmação, aceite de termos.
+                 - Validações rigorosas em JavaScript (validacao.js).
+                 - A classe "hidden" (display: none) é removida via JS quando necessário.
+                 ============================================= -->
             <form id="register-form" class="hidden">
                 <div class="form-group">
                     <label for="register-name"><i class="fas fa-user"></i> Nome Completo</label>
@@ -108,11 +128,15 @@
                 </p>
             </form>
             
-            <!-- Mensagem de sucesso (exibida após login/cadastro) -->
+            <!-- Mensagem de sucesso (exibida após cadastro/login bem-sucedido) -->
             <div id="login-message" class="success-message"></div>
         </div>
         
-        <!-- Painel informativo sobre os benefícios de criar uma conta -->
+        <!-- ================================================
+         PAINEL INFORMATIVO (LADO DIREITO)
+         Explica os benefícios de criar uma conta, incentivando o cadastro.
+         Ícones do Font Awesome ajudam na comunicação visual.
+         ============================================= -->
         <div class="login-info">
             <h2>Por que criar uma conta?</h2>
             <ul>
@@ -125,6 +149,7 @@
         </div>
     </main>
 
+    <!-- Rodapé simplificado (apenas informações essenciais) -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">

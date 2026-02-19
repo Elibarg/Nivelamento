@@ -1,12 +1,27 @@
-/* ===== SUMÁRIO validacao.js =====
- * 1. VALIDAÇÃO DO FORMULÁRIO DE CADASTRO
- * 2. VALIDAÇÃO EM TEMPO REAL (e-mail, confirmação de senha)
- * ================================ */
-
-// validacao.js – validações específicas para o formulário de cadastro
+/* ============================================================
+   SUMÁRIO validacao.js
+   ------------------------------------------------------------
+   1. VALIDAÇÃO DO FORMULÁRIO DE CADASTRO
+   2. VALIDAÇÃO EM TEMPO REAL (e-mail, confirmação de senha)
+   ============================================================ */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // ---------- Validação do formulário de cadastro ----------
+    /* ===== 1. VALIDAÇÃO DO FORMULÁRIO DE CADASTRO ===== */
+    /*
+       Objetivo: Validar todos os campos do formulário de registro antes de simular o envio.
+       Como funciona:
+       - Capturamos o evento submit e impedimos o envio real.
+       - Obtemos os valores de cada campo e os elementos de erro correspondentes.
+       - Realizamos validações sequenciais:
+           * Nome: não vazio, mínimo 3 caracteres.
+           * E-mail: formato válido com regex.
+           * Senha: mínimo 8 caracteres, deve conter letra maiúscula, minúscula e número (regex).
+           * Confirmação: deve ser igual à senha.
+           * Termos: deve estar marcado.
+       - Se alguma validação falhar, exibimos mensagem de erro no respectivo elemento.
+       - Se todas passarem, exibimos mensagem de sucesso, limpamos o formulário e,
+         após 3 segundos, voltamos para o formulário de login (simulando cadastro concluído).
+    */
     const registerForm = document.getElementById('register-form');
     
     if (registerForm) {
@@ -25,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const confirmError = document.getElementById('confirm-error');
             const loginMessage = document.getElementById('login-message');
             
-            // Limpa mensagens de erro
+            // Limpa mensagens de erro anteriores
             nameError.textContent = '';
             emailError.textContent = '';
             passwordError.textContent = '';
@@ -42,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 isValid = false;
             }
             
-            // Validação do e-mail
+            // Validação do e-mail com regex
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (email === '') {
                 emailError.textContent = 'Por favor, informe seu e-mail.';
@@ -73,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 isValid = false;
             }
             
-            // Aceite dos termos
+            // Validação dos termos (checkbox)
             if (!terms) {
                 alert('Você deve aceitar os Termos de Uso e Política de Privacidade.');
                 isValid = false;
@@ -96,20 +111,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ---------- Validação em tempo real ----------
+    /* ===== 2. VALIDAÇÃO EM TEMPO REAL ===== */
+    /*
+       Objetivo: Fornecer feedback imediato ao usuário enquanto ele digita ou sai de um campo.
+       Isso melhora a experiência do usuário, evitando que ele só descubra erros após o envio.
+
+       Implementação:
+       - Para campos de e-mail: usamos o evento 'blur' (quando o campo perde o foco) para validar
+         o formato do e-mail e exibir erro se necessário.
+       - Para confirmação de senha: usamos 'input' (enquanto digita) para verificar se as senhas coincidem,
+         atualizando a mensagem de erro em tempo real.
+    */
     function setupRealTimeValidation() {
         // Validação de e-mail ao perder o foco (blur)
         const emailInputs = document.querySelectorAll('input[type="email"]');
         emailInputs.forEach(input => {
             input.addEventListener('blur', function() {
                 const email = this.value.trim();
-                const errorId = this.id + '-error';
+                const errorId = this.id + '-error'; // Ex: "login-email" -> "login-email-error"
                 const errorElement = document.getElementById(errorId);
                 
                 if (errorElement) {
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     if (email === '') {
-                        errorElement.textContent = '';
+                        errorElement.textContent = ''; // Campo vazio não gera erro (pode ser opcional)
                     } else if (!emailRegex.test(email)) {
                         errorElement.textContent = 'Por favor, informe um e-mail válido.';
                     } else {
@@ -119,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Validação de confirmação de senha em tempo real (enquanto digita)
+        // Validação de confirmação de senha em tempo real
         const passwordInput = document.getElementById('register-password');
         const confirmInput = document.getElementById('confirm-password');
         const confirmError = document.getElementById('confirm-error');
@@ -134,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             };
+            // Dispara a cada tecla digitada nos dois campos
             passwordInput.addEventListener('input', validatePasswordMatch);
             confirmInput.addEventListener('input', validatePasswordMatch);
         }

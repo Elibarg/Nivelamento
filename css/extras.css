@@ -1,37 +1,50 @@
-/* ===== SUMÁRIO extras.css =====
- * 1. PÁGINA DE RECICLAGEM
- *    1.1 Introdução e estatísticas
- *    1.2 Cores da coleta seletiva
- *    1.3 Abas de materiais
- *    1.4 Quiz interativo
- *    1.5 Busca de CEP
- * 2. PÁGINA DE CLIMA
- *    2.1 Introdução com vídeo
- *    2.2 Cards de causas
- *    2.3 Gráficos
- *    2.4 Timeline de ações
- *    2.5 Compromisso climático
- *    2.6 Notícias
- * ============================== */
- 
-/* Estilos para página de Reciclagem */
+/* ============================================================
+   SUMÁRIO extras.css
+   ------------------------------------------------------------
+   1. PÁGINA DE RECICLAGEM
+       1.1 Introdução e estatísticas
+       1.2 Cores da coleta seletiva
+       1.3 Abas de materiais
+       1.4 Quiz interativo
+       1.5 Busca de CEP
+   2. PÁGINA DE CLIMA
+       2.1 Introdução com vídeo
+       2.2 Cards de causas
+       2.3 Gráficos
+       2.4 Timeline de ações
+       2.5 Compromisso climático
+       2.6 Notícias
+   ============================================================ */
+
+/* ===== 1. PÁGINA DE RECICLAGEM ===== */
+
+/* ----- 1.1 Introdução e estatísticas ----- */
+/*
+   A seção introdutória usa fundo cinza claro para destacar-se.
+   As estatísticas são exibidas em cards com ícones grandes e números/dados.
+   O grid se adapta ao espaço disponível com minmax(250px, 1fr), garantindo que
+   em telas pequenas os cards fiquem em coluna.
+*/
 .reciclagem-intro {
     background-color: var(--cinza-claro);
     padding: 3rem;
     border-radius: 10px;
     margin: 2rem 0;
 }
+
 .reciclagem-intro h2 {
     color: var(--verde-escuro);
     margin-bottom: 1.5rem;
     text-align: center;
 }
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
+
 .stat-item {
     background-color: var(--branco);
     padding: 1.5rem;
@@ -39,21 +52,30 @@
     text-align: center;
     box-shadow: var(--sombra);
 }
+
 .stat-item i {
     font-size: 2.5rem;
     color: var(--verde-claro);
     margin-bottom: 1rem;
 }
+
 .stat-item h3 {
     font-size: 1rem;
     margin-bottom: 0.5rem;
-    color: var(--marrom);
+    color: var(--marrom); /* Contraste com o verde */
 }
 
-/* Cores da coleta seletiva */
+/* ----- 1.2 Cores da coleta seletiva ----- */
+/*
+   Exibe as cores oficiais da coleta seletiva em cards coloridos.
+   Cada card tem uma cor de fundo fixa (definida inline no HTML) e texto escuro ou claro,
+   dependendo do contraste. Usamos flexbox para centralizar o conteúdo verticalmente.
+   O hover dá um efeito de elevação.
+*/
 .cores-coleta {
     margin: 3rem 0;
 }
+
 .cores-coleta h2 {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -61,20 +83,24 @@
     align-items: center;
     justify-content: center;
 }
+
 .cores-coleta h2 i {
     margin-right: 10px;
 }
+
 .cores-coleta p {
     text-align: center;
     margin-bottom: 2rem;
     color: var(--cinza-escuro);
 }
+
 .cores-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem;
     margin-top: 2rem;
 }
+
 .cor-item {
     padding: 1.5rem;
     border-radius: 8px;
@@ -84,23 +110,39 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--cinza-escuro);
+    color: var(--cinza-escuro); /* cor padrão (para fundos claros) */
     transition: var(--transicao);
-    cursor: pointer;
+    cursor: pointer; /* indica que é interativo */
 }
+
+/* Ajuste de cor para fundos escuros (preto e marrom) */
+.cor-item[style*="background-color: #000000"] p,
+.cor-item[style*="background-color: #795548"] p {
+    color: white;
+}
+
 .cor-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+
 .cor-item h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
 
-/* Abas de materiais */
+/* ----- 1.3 Abas de materiais ----- */
+/*
+   Sistema de abas para exibir informações detalhadas sobre cada tipo de material.
+   - Os botões das abas ficam em uma linha (flex-wrap para quebra em telas pequenas).
+   - O conteúdo de cada aba fica oculto (display: none) até que a aba correspondente seja ativada.
+   - A classe .active controla a visibilidade.
+   - O conteúdo é organizado em duas colunas (imagem e texto) usando flexbox.
+*/
 .materiais-detalhados {
     margin: 3rem 0;
 }
+
 .materiais-tabs {
     display: flex;
     flex-wrap: wrap;
@@ -108,6 +150,7 @@
     margin-bottom: 2rem;
     justify-content: center;
 }
+
 .tab-btn {
     padding: 10px 20px;
     background-color: var(--cinza-claro);
@@ -117,59 +160,77 @@
     font-weight: 500;
     transition: var(--transicao);
 }
+
 .tab-btn:hover {
     background-color: var(--verde-claro);
     color: var(--branco);
 }
+
 .tab-btn.active {
     background-color: var(--verde-escuro);
     color: var(--branco);
 }
+
 .tab-content {
-    display: none;
+    display: none; /* Inicialmente oculto */
     background-color: var(--cinza-claro);
     padding: 2rem;
     border-radius: 8px;
 }
+
 .tab-content.active {
-    display: block;
+    display: block; /* Exibido quando a aba correspondente está ativa */
 }
+
 .material-content {
     display: flex;
     gap: 2rem;
     align-items: center;
 }
+
 .material-info {
-    flex: 2;
+    flex: 2; /* Ocupa 2/3 do espaço */
 }
+
 .material-image {
-    flex: 1;
+    flex: 1; /* Ocupa 1/3 do espaço */
     text-align: center;
 }
+
 .material-image img {
     max-width: 100%;
     border-radius: 8px;
     box-shadow: var(--sombra);
 }
+
 .material-info h3 {
     color: var(--verde-escuro);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
 }
+
 .material-info h3 i {
     margin-right: 10px;
 }
+
 .material-info ul {
     list-style: none;
     padding-left: 0;
 }
+
 .material-info li {
     padding: 5px 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; /* Linha separadora sutil */
 }
 
-/* Quiz de reciclagem */
+/* ----- 1.4 Quiz interativo ----- */
+/*
+   Estilização do quiz: fundo verde claro, perguntas em container semitransparente.
+   As opções são botões que mudam de cor ao passar o mouse.
+   As classes .correct e .incorrect são adicionadas via JavaScript para feedback visual.
+   O quiz tem navegação interna (anterior/próxima) e exibe resultado ao final.
+*/
 .quiz-reciclagem {
     background-color: var(--verde-claro);
     padding: 3rem;
@@ -177,6 +238,7 @@
     margin: 3rem 0;
     color: var(--branco);
 }
+
 .quiz-reciclagem h2 {
     color: var(--branco);
     text-align: center;
@@ -185,37 +247,45 @@
     align-items: center;
     justify-content: center;
 }
+
 .quiz-reciclagem h2 i {
     margin-right: 10px;
 }
+
 .quiz-reciclagem p {
     text-align: center;
     margin-bottom: 2rem;
     opacity: 0.9;
 }
+
 .quiz-container {
     max-width: 800px;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo semitransparente */
     padding: 2rem;
     border-radius: 8px;
 }
+
 .quiz-question {
-    display: none;
+    display: none; /* Inicialmente oculto, apenas a pergunta ativa aparece */
 }
+
 .quiz-question.active {
     display: block;
 }
+
 .quiz-question h3 {
     color: var(--branco);
     margin-bottom: 1.5rem;
 }
+
 .quiz-options {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas em telas maiores */
     gap: 1rem;
     margin-bottom: 2rem;
 }
+
 .quiz-option {
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.9);
@@ -226,44 +296,58 @@
     text-align: left;
     color: var(--cinza-escuro);
 }
+
 .quiz-option:hover {
     background-color: var(--verde-escuro);
     color: var(--branco);
 }
+
 .quiz-option.correct {
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Verde para resposta correta */
     color: white;
 }
+
 .quiz-option.incorrect {
-    background-color: #F44336;
+    background-color: #F44336; /* Vermelho para resposta incorreta selecionada */
     color: white;
 }
+
 .quiz-navigation {
     display: flex;
     justify-content: space-between;
     margin-top: 2rem;
 }
+
 .quiz-results {
     text-align: center;
     padding: 2rem;
 }
+
 .score-display {
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
+
 #quiz-score {
     font-size: 2rem;
     font-weight: bold;
     color: var(--branco);
 }
 
-/* Busca de CEP */
+/* ----- 1.5 Busca de CEP ----- */
+/*
+   Simulação de busca de pontos de coleta por CEP.
+   O formulário de busca tem um campo de CEP com formatação (hífen automático via JS).
+   Os resultados são exibidos em cards dentro de uma grade.
+   A classe .hidden controla a visibilidade dos resultados.
+*/
 .local-coleta {
     margin: 3rem 0;
     padding: 2rem;
     background-color: var(--cinza-claro);
     border-radius: 10px;
 }
+
 .local-coleta h2 {
     text-align: center;
     margin-bottom: 1rem;
@@ -271,23 +355,32 @@
     align-items: center;
     justify-content: center;
 }
+
 .local-coleta h2 i {
     margin-right: 10px;
 }
+
 .coleta-form {
     max-width: 500px;
     margin: 2rem auto;
     text-align: center;
 }
+
+.coleta-form .form-group {
+    text-align: left;
+}
+
 .resultados-coleta {
     margin-top: 2rem;
 }
+
 .pontos-lista {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     margin-top: 1rem;
 }
+
 .ponto-item {
     background-color: var(--branco);
     padding: 1.5rem;
@@ -295,36 +388,53 @@
     box-shadow: var(--sombra);
 }
 
-/* Estilos para página de Clima */
+/* ===== 2. PÁGINA DE CLIMA ===== */
+
+/* ----- 2.1 Introdução com vídeo ----- */
+/*
+   A introdução combina um vídeo do YouTube com um texto explicativo.
+   Usamos flexbox para alinhar lado a lado, com quebra em telas pequenas (flex-wrap).
+   O vídeo tem altura fixa de 300px e bordas arredondadas.
+*/
 .clima-intro {
     display: flex;
     gap: 3rem;
     align-items: center;
     margin: 3rem 0;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite quebra em telas menores */
 }
+
 .intro-video {
     flex: 1;
     min-width: 300px;
 }
+
 .intro-video iframe {
     width: 100%;
     height: 300px;
     border-radius: 10px;
 }
+
 .intro-text {
     flex: 1;
     min-width: 300px;
 }
+
 .intro-text h2 {
     color: var(--verde-escuro);
     margin-bottom: 1rem;
 }
 
-/* Cards de causas */
+/* ----- 2.2 Cards de causas ----- */
+/*
+   Cards em grid mostrando as principais causas das mudanças climáticas.
+   Cada card tem um ícone grande, título e descrição.
+   Efeito hover de elevação.
+*/
 .causas-clima {
     margin: 3rem 0;
 }
+
 .causas-clima h2 {
     text-align: center;
     margin-bottom: 2rem;
@@ -332,14 +442,17 @@
     align-items: center;
     justify-content: center;
 }
+
 .causas-clima h2 i {
     margin-right: 10px;
 }
+
 .causas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
+
 .causa-card {
     background-color: var(--branco);
     padding: 2rem;
@@ -348,26 +461,36 @@
     text-align: center;
     transition: var(--transicao);
 }
+
 .causa-card:hover {
     transform: translateY(-5px);
 }
+
 .causa-icon {
     font-size: 3rem;
     color: var(--verde-escuro);
     margin-bottom: 1rem;
 }
+
 .causa-card h3 {
     color: var(--marrom);
     margin-bottom: 1rem;
 }
 
-/* Gráficos */
+/* ----- 2.3 Gráficos ----- */
+/*
+   Seção com dois gráficos (CO₂ e temperatura) lado a lado.
+   Cada gráfico é um canvas que será preenchido pelo Chart.js.
+   A seção tem fundo cinza claro para destacar.
+   Os gráficos são responsivos e se adaptam ao container.
+*/
 .graficos-clima {
     margin: 3rem 0;
     padding: 3rem 0;
     background-color: var(--cinza-claro);
     border-radius: 10px;
 }
+
 .graficos-clima h2 {
     text-align: center;
     margin-bottom: 2rem;
@@ -375,69 +498,50 @@
     align-items: center;
     justify-content: center;
 }
+
 .graficos-clima h2 i {
     margin-right: 10px;
 }
+
 .graficos-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 2rem;
     margin: 2rem 0;
 }
+
 .grafico-item {
     background-color: var(--branco);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: var(--sombra);
 }
+
 .grafico-item h3 {
     text-align: center;
     margin-bottom: 1rem;
     color: var(--verde-escuro);
 }
+
 .grafico-legenda {
     text-align: center;
     font-style: italic;
     margin-top: 1rem;
     color: var(--cinza-escuro);
 }
-.impactos-visuais {
-    margin-top: 3rem;
-}
-.impactos-visuais h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--verde-escuro);
-}
-.impactos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-.impacto-item {
-    background-color: var(--branco);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--sombra);
-}
-.impacto-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-.impacto-item h4 {
-    padding: 1rem 1rem 0.5rem;
-    color: var(--verde-escuro);
-}
-.impacto-item p {
-    padding: 0 1rem 1rem;
-    color: var(--cinza-escuro);
-}
 
-/* Timeline de ações */
+/* ----- 2.4 Timeline de ações ----- */
+/*
+   Exibe uma lista de ações em formato de linha do tempo.
+   Uma linha vertical (pseudo-elemento :before) conecta os itens.
+   Cada item tem um número circular à esquerda.
+   O conteúdo do item é um card com sombra.
+   A linha é posicionada absolutamente em relação ao container.
+*/
 .acoes-clima {
     margin: 3rem 0;
 }
+
 .acoes-clima h2 {
     text-align: center;
     margin-bottom: 1rem;
@@ -445,30 +549,36 @@
     align-items: center;
     justify-content: center;
 }
+
 .acoes-clima > p {
     text-align: center;
     margin-bottom: 2rem;
     color: var(--cinza-escuro);
 }
+
 .acoes-timeline {
     max-width: 800px;
     margin: 0 auto 3rem;
     position: relative;
 }
+
+/* Linha vertical */
 .acoes-timeline:before {
     content: '';
     position: absolute;
-    left: 30px;
+    left: 30px; /* Alinhada com o centro dos círculos */
     top: 0;
     bottom: 0;
     width: 3px;
     background-color: var(--verde-claro);
 }
+
 .timeline-item {
     display: flex;
     margin-bottom: 2rem;
     position: relative;
 }
+
 .timeline-number {
     width: 60px;
     height: 60px;
@@ -481,9 +591,10 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-right: 2rem;
-    flex-shrink: 0;
-    z-index: 1;
+    flex-shrink: 0; /* Não encolhe */
+    z-index: 1; /* Fica acima da linha */
 }
+
 .timeline-content {
     flex: 1;
     background-color: var(--branco);
@@ -491,18 +602,25 @@
     border-radius: 8px;
     box-shadow: var(--sombra);
 }
+
 .timeline-content h3 {
     color: var(--verde-escuro);
     margin-bottom: 0.5rem;
 }
 
-/* Compromisso climático */
+/* ----- 2.5 Compromisso climático ----- */
+/*
+   Formulário para assinar compromisso, com fundo verde claro.
+   O campo "outro compromisso" aparece apenas quando selecionado no select.
+   Contador de assinaturas com número grande em destaque.
+*/
 .compromisso-clima {
     background-color: var(--verde-claro);
     padding: 3rem;
     border-radius: 10px;
     color: var(--branco);
 }
+
 .compromisso-clima h3 {
     color: var(--branco);
     text-align: center;
@@ -511,35 +629,46 @@
     align-items: center;
     justify-content: center;
 }
+
 .compromisso-clima h3 i {
     margin-right: 10px;
 }
+
 .compromisso-clima > p {
     text-align: center;
     margin-bottom: 2rem;
     opacity: 0.9;
 }
+
 #compromisso-form {
     max-width: 500px;
     margin: 2rem auto;
 }
+
 #compromisso-form .form-group label {
     color: var(--branco);
 }
+
 #contador-compromissos {
     text-align: center;
     margin-top: 2rem;
     font-size: 1.2rem;
 }
+
 #total-compromissos {
     font-size: 2rem;
     font-weight: bold;
 }
 
-/* Notícias */
+/* ----- 2.6 Notícias ----- */
+/*
+   Grade de cards de notícias, cada um com data, título, resumo e botão.
+   Efeito hover de elevação.
+*/
 .noticias-clima {
     margin: 3rem 0;
 }
+
 .noticias-clima h2 {
     text-align: center;
     margin-bottom: 2rem;
@@ -547,14 +676,17 @@
     align-items: center;
     justify-content: center;
 }
+
 .noticias-clima h2 i {
     margin-right: 10px;
 }
+
 .noticias-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
+
 .noticia-card {
     background-color: var(--branco);
     padding: 2rem;
@@ -562,18 +694,22 @@
     box-shadow: var(--sombra);
     transition: var(--transicao);
 }
+
 .noticia-card:hover {
     transform: translateY(-5px);
 }
+
 .noticia-data {
     color: var(--verde-claro);
     font-weight: 600;
     margin-bottom: 1rem;
 }
+
 .noticia-card h3 {
     color: var(--verde-escuro);
     margin-bottom: 1rem;
 }
+
 .noticia-card p {
     color: var(--cinza-escuro);
     margin-bottom: 1.5rem;

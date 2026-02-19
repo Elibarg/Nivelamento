@@ -12,22 +12,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Poppins para títulos, Open Sans para textos -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Cabeçalho com navegação principal -->
-    <header>
+<header>
         <nav class="navbar">
-            <!-- Logo do site -->
+            <!-- Logo: combina ícone e texto para reforçar a identidade visual -->
             <div class="logo">
-                <i class="fas fa-leaf"></i> <!-- Ícone de folha -->
+                <i class="fas fa-leaf"></i> <!-- Ícone de folha (sustentabilidade) -->
                 <span>EcoConsciente</span>
             </div>
-            <!-- Menu de navegação -->
+            <!-- Menu de navegação (lista não ordenada) -->
             <ul class="nav-menu">
+                <!-- Link ativo: classe "active" indica a página atual (estilo verde escuro) -->
                 <li><a href="index.html" class="active"><i class="fas fa-home"></i> Início</a></li>
                 <li><a href="praticas.html"><i class="fas fa-recycle"></i> Práticas</a></li>
                 <li><a href="reciclagem.html"><i class="fas fa-trash-alt"></i> Reciclagem</a></li>
                 <li><a href="clima.html"><i class="fas fa-cloud-sun"></i> Clima</a></li>
+                <!-- Botão de login com classe especial para destaque -->
                 <li><a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a></li>
             </ul>
             <!-- Ícone do menu hamburguer (visível apenas em mobile) -->
@@ -39,7 +38,14 @@
         </nav>
     </header>
 
-    <!-- Seção Hero (destaque principal) -->
+    <!-- ================================================
+         HERO SECTION (SEÇÃO PRINCIPAL)
+         Objetivo: causar impacto visual e engajar o usuário.
+         - Texto de chamada forte.
+         - Botão de call-to-action (CTA) que leva para a página de práticas.
+         - Imagem ilustrativa (deve ser substituída por uma foto real).
+         O fundo usa gradiente linear nas cores do tema.
+         ============================================= -->
     <section class="hero">
         <div class="hero-content">
             <h1>Juntos por um Planeta Sustentável</h1>
@@ -47,15 +53,21 @@
             <a href="praticas.html" class="btn-primary">Comece Agora</a>
         </div>
         <div class="hero-image">
-            <!-- Substitua pelo caminho da sua imagem real -->
-            <img src="assets/images/hero-nature.jpg" alt="Natureza sustentável">
+            <!-- Imagem placeholder. Em produção, usar imagem real otimizada -->
+            <img src="assets/images.png" alt="Natureza sustentável">
         </div>
     </section>
 
-    <!-- Seção de cards com os principais temas -->
+    <!-- ================================================
+         SEÇÃO DE DESTAQUES (CARDS)
+         Apresenta os três pilares do site: reciclagem, consumo consciente e clima.
+         Cada card possui ícone, título, descrição e link para a página correspondente.
+         O layout é feito com CSS Grid, criando colunas responsivas.
+         ============================================= -->
     <section class="destaques">
         <h2>Áreas de Atuação</h2>
         <div class="cards-container">
+            <!-- Card 1: Reciclagem -->
             <div class="card">
                 <div class="card-icon">
                     <i class="fas fa-recycle"></i>
@@ -64,6 +76,7 @@
                 <p>Aprenda a separar corretamente seus resíduos e contribua para a economia circular.</p>
                 <a href="reciclagem.html" class="btn-secondary">Saiba mais</a>
             </div>
+            <!-- Card 2: Consumo Consciente -->
             <div class="card">
                 <div class="card-icon">
                     <i class="fas fa-tint"></i>
@@ -72,6 +85,7 @@
                 <p>Reduza o desperdício de água e energia com práticas simples no dia a dia.</p>
                 <a href="praticas.html" class="btn-secondary">Saiba mais</a>
             </div>
+            <!-- Card 3: Mudanças Climáticas -->
             <div class="card">
                 <div class="card-icon">
                     <i class="fas fa-seedling"></i>
@@ -83,13 +97,18 @@
         </div>
     </section>
 
-    <!-- Seção de vídeo -->
+    <!-- ================================================
+         SEÇÃO DE VÍDEO
+         Incorpora um vídeo do YouTube sobre sustentabilidade.
+         O wrapper com padding-bottom 56.25% cria uma caixa de proporção 16:9 responsiva.
+         A descrição ao lado complementa o conteúdo multimídia.
+         ============================================= -->
     <section class="video-section">
         <h2>Por que a Sustentabilidade Importa?</h2>
         <div class="video-container">
             <div class="video-wrapper">
-                <!-- Vídeo do YouTube sobre sustentabilidade (incorporado) -->
-                <iframe src="https://www.youtube.com/embed/dzB9FkK5gqc" title="Vídeo sobre sustentabilidade" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- Vídeo do YouTube (embed) - link atual deve ser verificado -->
+                <iframe src="https://www.youtube.com/embed/9TycLR0TqFA" title="Vídeo sobre sustentabilidade" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="video-description">
                 <h3>O futuro está em nossas mãos</h3>
@@ -98,25 +117,37 @@
         </div>
     </section>
 
-    <!-- Seção de Newsletter (formulário de inscrição) -->
+    <!-- ================================================
+         SEÇÃO DE NEWSLETTER
+         Formulário de inscrição para receber dicas sustentáveis.
+         A validação dos campos é feita em JavaScript (main.js).
+         Mensagens de erro e sucesso são exibidas nos elementos abaixo dos campos.
+         ============================================= -->
     <section class="newsletter">
         <h2>Receba Dicas Sustentáveis</h2>
         <p>Inscreva-se em nossa newsletter e receba semanalmente dicas práticas para uma vida mais sustentável.</p>
         <form id="newsletter-form">
             <div class="form-group">
                 <input type="text" id="nome" placeholder="Seu nome" required>
-                <div class="error-message" id="nome-error"></div> <!-- Mensagem de erro para o nome -->
+                <!-- Espaço reservado para mensagem de erro (gerenciado pelo JS) -->
+                <div class="error-message" id="nome-error"></div>
             </div>
             <div class="form-group">
                 <input type="email" id="email" placeholder="Seu melhor e-mail" required>
-                <div class="error-message" id="email-error"></div> <!-- Mensagem de erro para o email -->
+                <div class="error-message" id="email-error"></div>
             </div>
             <button type="submit" class="btn-primary">Inscrever-se</button>
         </form>
-        <div id="newsletter-message" class="success-message"></div> <!-- Mensagem de sucesso -->
+        <!-- Mensagem de sucesso (inicialmente oculta) -->
+        <div id="newsletter-message" class="success-message"></div>
     </section>
 
-    <!-- Rodapé -->
+    <!-- ================================================
+         RODAPÉ
+         Contém informações de contato, links rápidos e direitos autorais.
+         Organizado em grid para distribuir as seções uniformemente.
+         O ano no copyright é atualizado dinamicamente via JavaScript (main.js).
+         ============================================= -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -144,7 +175,12 @@
         </div>
     </footer>
 
-    <!-- Scripts JavaScript -->
+    <!-- ================================================
+         SCRIPTS JAVASCRIPT
+         - main.js: funcionalidades globais (menu, validações, contador).
+         - validacao.js: validações específicas do formulário de cadastro.
+         A separação mantém o código organizado e reutilizável.
+         ============================================= -->
     <script src="js/main.js"></script>
     <script src="js/validacao.js"></script>
 </body>
