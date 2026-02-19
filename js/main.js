@@ -5,19 +5,16 @@
    2. TROCA ENTRE LOGIN E CADASTRO
    3. VALIDAÇÃO DA NEWSLETTER
    4. SIMULAÇÃO DE LOGIN
-   5. CONTADOR DE IMPACTO (simulação)
-   6. INICIALIZAÇÃO (atualização do ano, etc.)
+   5. INICIALIZAÇÃO (atualização do ano, etc.)
    ========================================================= */
 
 /* ===== 1. MENU HAMBURGUER ===== */
 /*
    Objetivo: Controlar a abertura/fechamento do menu em dispositivos móveis.
    Como funciona:
-   - Seleciona o ícone do hamburguer e o menu de navegação.
-   - Ao clicar no hamburguer, alterna a classe 'active' em ambos.
-   - A classe 'active' no hamburguer aciona a animação dos traços (transformando em X).
-   - A classe 'active' no menu faz com que ele entre na tela vindo da esquerda (left: 0).
-   - Também fecha o menu quando qualquer link é clicado, para melhor usabilidade.
+    Seleciona o ícone .hamburger e o menu .nav-menu.
+    Ao clicar no ícone, alterna a classe active em ambos, fazendo o menu aparecer/desaparecer (via CSS).
+    Fecha o menu automaticamente quando um link é clicado, melhorando a usabilidade em mobile.
 */
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -40,10 +37,10 @@ if (hamburger) {
 /*
    Objetivo: Alternar entre o formulário de login e o de cadastro na mesma página.
    Como funciona:
-   - Inicialmente, o formulário de cadastro tem a classe 'hidden' (display: none).
-   - Ao clicar em "Cadastre-se aqui", escondemos o login e mostramos o cadastro.
-   - O link "Faça login aqui" faz o oposto.
-   - Previne o comportamento padrão do link (não recarrega a página).
+    Na página login.html, existem dois formulários: #login-form e #register-form (este inicialmente oculto com a classe hidden).
+    Ao clicar em #show-register (link "Cadastre-se aqui"), o formulário de login é escondido e o de cadastro é exibido (remove a classe hidden).
+    O link #show-login faz o oposto.
+    preventDefault() impede o recarregamento da página.
 */
 const showRegisterLink = document.getElementById('show-register');
 const showLoginLink = document.getElementById('show-login');
@@ -64,16 +61,17 @@ if (showRegisterLink && showLoginLink) {
     });
 }
 
-/* ===== 3. VALIDAÇÃO DA NEWSLETTER ===== */
+/* ===== 3. VALIDAÇÃO DA (NEWSLETTER)(Boletim informativo) ===== */
 /*
    Objetivo: Validar os campos do formulário de newsletter antes de simular o envio.
    Como funciona:
-   - Captura o evento submit e previne o envio real.
-   - Obtém os valores dos campos e os elementos de erro.
-   - Valida nome (não vazio, mínimo 2 caracteres).
-   - Valida e-mail usando regex simples (formato texto@dominio.com).
-   - Se válido, exibe mensagem de sucesso, limpa o formulário e esconde a mensagem após 5s.
-   - Se inválido, exibe as mensagens de erro nos respectivos elementos.
+    Captura o evento submit e impede o envio real.
+    Obtém os valores de nome e e-mail, e os elementos de erro correspondentes.
+    Valida:
+    Nome: não pode estar vazio e deve ter pelo menos 2 caracteres.
+    E-mail: usa uma expressão regular simples (/^[^\s@]+@[^\s@]+\.[^\s@]+$/) para verificar o formato básico.
+    Se tudo estiver correto, exibe uma mensagem de sucesso (verde) e limpa o formulário. Após 5 segundos, a mensagem desaparece.
+    Em caso de erro, as mensagens são inseridas nos elementos <div class="error-message"> correspondentes.
 */
 const newsletterForm = document.getElementById('newsletter-form');
 
@@ -174,46 +172,6 @@ if (loginFormElement) {
             }, 2000);
         }
     });
-}
-
-/* ===== 5. CONTADOR DE IMPACTO (SIMULAÇÃO) ===== */
-/*
-   Objetivo: Simular um sistema de pontos de engajamento.
-   Como funciona:
-   - Seleciona todos os botões "Saiba mais" dentro dos cards na página inicial.
-   - Ao clicar, armazena no localStorage um contador de pontos (incrementa 10).
-   - Feedback visual temporário: o botão muda de texto e cor por 1.5s.
-   - Isso demonstra interatividade e possibilidade de gamificação.
-*/
-function initImpactCounter() {
-    const impactCards = document.querySelectorAll('.card');
-    if (impactCards.length > 0) {
-        impactCards.forEach(card => {
-            const link = card.querySelector('.btn-secondary');
-            if (link) {
-                link.addEventListener('click', function(e) {
-                    if (localStorage.getItem('ecoPoints')) {
-                        let points = parseInt(localStorage.getItem('ecoPoints'));
-                        points += 10;
-                        localStorage.setItem('ecoPoints', points);
-                    } else {
-                        localStorage.setItem('ecoPoints', '10');
-                    }
-                    
-                    const originalText = this.textContent;
-                    this.textContent = '✓ Contribuição registrada!';
-                    this.style.backgroundColor = '#2e7d32';
-                    this.style.color = 'white';
-                    
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                        this.style.backgroundColor = '';
-                        this.style.color = '';
-                    }, 1500);
-                });
-            }
-        });
-    }
 }
 
 /* ===== 6. INICIALIZAÇÃO ===== */
