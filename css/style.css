@@ -1,21 +1,35 @@
-/* Reset e Estilos Gerais */
+/* ===== SUMÁRIO style.css =====
+ * 1. RESET E VARIÁVEIS GLOBAIS
+ * 2. ESTILOS GERAIS (body, container, títulos)
+ * 3. NAVEGAÇÃO (navbar, logo, menu, hamburguer)
+ * 4. HERO SECTION
+ * 5. BOTÕES (.btn-primary, .btn-secondary)
+ * 6. CARDS (destaques, cards-container, card)
+ * 7. SEÇÃO DE VÍDEO
+ * 8. NEWSLETTER E FORMULÁRIOS
+ * 9. RODAPÉ
+ * =============================== */
+
+/* Reset básico para remover margens e paddings padrão */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Inclui bordas e padding no cálculo da largura */
 }
 
+/* Variáveis de cores do tema (Sustentabilidade) */
 :root {
-    --verde-escuro: #2e7d32;
-    --verde-claro: #81c784;
-    --marrom: #795548;
-    --branco: #ffffff;
-    --cinza-claro: #f5f5f5;
-    --cinza-escuro: #333333;
-    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --transicao: all 0.3s ease;
+    --verde-escuro: #2e7d32;   /* Cor principal (natureza) */
+    --verde-claro: #81c784;     /* Cor de destaque (interações) */
+    --marrom: #795548;          /* Cor orgânica */
+    --branco: #ffffff;           /* Fundo e contraste */
+    --cinza-claro: #f5f5f5;      /* Fundo de seções */
+    --cinza-escuro: #333333;     /* Cor do texto principal */
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra padrão */
+    --transicao: all 0.3s ease;  /* Transição suave para efeitos hover */
 }
 
+/* Estilos gerais do body */
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
@@ -23,12 +37,14 @@ body {
     background-color: var(--branco);
 }
 
+/* Títulos com fonte Poppins e cor verde escuro */
 h1, h2, h3, h4 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: var(--verde-escuro);
 }
 
+/* Container centralizado com largura máxima */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -36,7 +52,7 @@ h1, h2, h3, h4 {
     padding: 0 20px;
 }
 
-/* Navegação */
+/* ---------- Navegação ---------- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -44,7 +60,7 @@ h1, h2, h3, h4 {
     padding: 1.5rem 2rem;
     background-color: var(--branco);
     box-shadow: var(--sombra);
-    position: sticky;
+    position: sticky; /* Fixa no topo ao rolar */
     top: 0;
     z-index: 1000;
 }
@@ -101,6 +117,7 @@ h1, h2, h3, h4 {
     color: var(--branco) !important;
 }
 
+/* Menu hamburguer (invisível em telas grandes) */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -115,7 +132,7 @@ h1, h2, h3, h4 {
     transition: var(--transicao);
 }
 
-/* Hero Section */
+/* ---------- Hero ---------- */
 .hero {
     display: flex;
     align-items: center;
@@ -153,7 +170,7 @@ h1, h2, h3, h4 {
     box-shadow: var(--sombra);
 }
 
-/* Botões */
+/* ---------- Botões ---------- */
 .btn-primary {
     display: inline-block;
     padding: 12px 30px;
@@ -191,7 +208,7 @@ h1, h2, h3, h4 {
     color: var(--verde-claro);
 }
 
-/* Cards */
+/* ---------- Cards ---------- */
 .destaques {
     padding: 5rem 2rem;
     background-color: var(--cinza-claro);
@@ -240,7 +257,7 @@ h1, h2, h3, h4 {
     color: var(--cinza-escuro);
 }
 
-/* Seção de Vídeo */
+/* ---------- Vídeo ---------- */
 .video-section {
     padding: 5rem 2rem;
     background-color: var(--branco);
@@ -286,7 +303,7 @@ h1, h2, h3, h4 {
     color: var(--verde-escuro);
 }
 
-/* Newsletter */
+/* ---------- Newsletter ---------- */
 .newsletter {
     padding: 5rem 2rem;
     background-color: var(--verde-claro);
@@ -310,7 +327,7 @@ h1, h2, h3, h4 {
     margin: 0 auto;
 }
 
-/* Formulários */
+/* ---------- Formulários ---------- */
 .form-group {
     margin-bottom: 1.5rem;
     text-align: left;
@@ -323,7 +340,8 @@ h1, h2, h3, h4 {
     color: var(--verde-escuro);
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
     width: 100%;
     padding: 12px 15px;
     border: 2px solid #ddd;
@@ -332,7 +350,8 @@ h1, h2, h3, h4 {
     transition: var(--transicao);
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.form-group select:focus {
     border-color: var(--verde-claro);
     outline: none;
 }
@@ -353,7 +372,7 @@ h1, h2, h3, h4 {
     display: none;
 }
 
-/* Rodapé */
+/* ----------  ---------- */
 footer {
     background-color: var(--verde-escuro);
     color: var(--branco);

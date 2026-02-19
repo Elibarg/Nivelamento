@@ -1,61 +1,70 @@
-// JavaScript para a página de Reciclagem
+/* ===== SUMÁRIO reciclagem.js =====
+ * 1. SISTEMA DE ABAS DE MATERIAIS
+ * 2. QUIZ INTERATIVO
+ *    2.1 Navegação entre perguntas
+ *    2.2 Registro de respostas
+ *    2.3 Exibição de resultados
+ * 3. BUSCA DE PONTOS DE COLETA (simulada)
+ *    3.1 Validação de CEP
+ *    3.2 Exibição de resultados fictícios
+ * ================================= */
+
+// reciclagem.js – scripts específicos para a página de reciclagem
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Sistema de abas dos materiais
+    // ---------- Sistema de abas de materiais ----------
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
     
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remover classe active de todas as abas
+            // Remove a classe 'active' de todas as abas e conteúdos
             tabBtns.forEach(b => b.classList.remove('active'));
             tabContents.forEach(content => content.classList.remove('active'));
             
-            // Adicionar classe active à aba clicada
+            // Ativa a aba clicada
             btn.classList.add('active');
             
-            // Mostrar conteúdo correspondente
+            // Mostra o conteúdo correspondente (data-tab aponta para o id do conteúdo)
             const tabId = btn.getAttribute('data-tab');
             document.getElementById(tabId).classList.add('active');
         });
     });
     
-    // Sistema do Quiz de Reciclagem
+    // ---------- Quiz interativo ----------
     const quizQuestions = document.querySelectorAll('.quiz-question');
     const prevBtn = document.getElementById('prev-question');
     const nextBtn = document.getElementById('next-question');
     const submitBtn = document.getElementById('submit-quiz');
     const restartBtn = document.getElementById('restart-quiz');
     let currentQuestion = 0;
-    let userAnswers = [];
+    let userAnswers = []; // armazena true/false para cada pergunta
     
-    // Mostrar primeira pergunta
+    // Exibe a primeira pergunta
     showQuestion(currentQuestion);
     
-    // Evento para opções do quiz
+    // Ao clicar em uma opção de resposta
     document.querySelectorAll('.quiz-option').forEach(option => {
         option.addEventListener('click', function() {
             const questionId = this.closest('.quiz-question').id;
             const questionIndex = parseInt(questionId.replace('q', '')) - 1;
             
-            // Remover seleção anterior nesta pergunta
+            // Remove seleção anterior na mesma pergunta
             const questionOptions = this.parentElement.querySelectorAll('.quiz-option');
-            questionOptions.forEach(opt => {
-                opt.classList.remove('selected');
-            });
+            questionOptions.forEach(opt => opt.classList.remove('selected'));
             
-            // Marcar esta opção como selecionada
+            // Marca a opção clicada como selecionada
             this.classList.add('selected');
             
-            // Armazenar resposta
+            // Armazena a resposta (true se for a correta, false caso contrário)
             userAnswers[questionIndex] = this.getAttribute('data-correct') === 'true';
             
-            // Atualizar navegação
+            // Atualiza navegação (pode habilitar botões se necessário)
             updateQuizNavigation();
         });
     });
     
-    // Botão Próxima
+    // Botão "Próxima"
     if (nextBtn) {
         nextBtn.addEventListener('click', function() {
             if (currentQuestion < quizQuestions.length - 1) {
@@ -66,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Botão Anterior
+    // Botão "Anterior"
     if (prevBtn) {
         prevBtn.addEventListener('click', function() {
             if (currentQuestion > 0) {
@@ -77,12 +86,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Botão Ver Resultado
+    // Botão "Ver Resultado"
     if (submitBtn) {
         submitBtn.addEventListener('click', showQuizResults);
     }
     
-    // Botão Refazer Quiz
+    // Botão "Refazer Quiz"
     if (restartBtn) {
         restartBtn.addEventListener('click', function() {
             currentQuestion = 0;
@@ -91,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showQuestion(currentQuestion);
             updateQuizNavigation();
             
-            // Resetar seleções
+            // Limpa as classes de correção e seleção
             document.querySelectorAll('.quiz-option').forEach(option => {
                 option.classList.remove('selected', 'correct', 'incorrect');
             });
@@ -109,9 +118,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Função para atualizar navegação do quiz
+    // Atualiza o estado dos botões de navegação conforme a pergunta atual
     function updateQuizNavigation() {
-        // Atualizar botões
         prevBtn.disabled = currentQuestion === 0;
         
         if (currentQuestion === quizQuestions.length - 1) {
@@ -123,16 +131,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Função para mostrar resultados do quiz
+    // Exibe os resultados do quiz
     function showQuizResults() {
-        // Calcular pontuação
         const score = userAnswers.filter(answer => answer === true).length;
         const total = quizQuestions.length;
         
-        // Atualizar display
         document.getElementById('quiz-score').textContent = score;
         
-        // Mensagem personalizada
         const message = document.getElementById('quiz-message');
         if (score === total) {
             message.textContent = 'Excelente! Você é um mestre da reciclagem!';
@@ -145,10 +150,9 @@ document.addEventListener('DOMContentLoaded', function() {
             message.style.color = '#F44336';
         }
         
-        // Mostrar resultados
         document.querySelector('.quiz-results').classList.remove('hidden');
         
-        // Destacar respostas corretas/incorretas
+        // Destaca respostas corretas (verde) e incorretas selecionadas (vermelho)
         quizQuestions.forEach((question, index) => {
             const options = question.querySelectorAll('.quiz-option');
             options.forEach(option => {
@@ -161,16 +165,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Sistema de busca de pontos de coleta (simulado)
+    // ---------- Busca de pontos de coleta (simulada) ----------
     const buscarColetaBtn = document.getElementById('buscar-coleta');
     const cepInput = document.getElementById('cep');
     const cepError = document.getElementById('cep-error');
     
     if (buscarColetaBtn) {
         buscarColetaBtn.addEventListener('click', function() {
-            const cep = cepInput.value.replace(/\D/g, '');
+            const cep = cepInput.value.replace(/\D/g, ''); // remove caracteres não numéricos
             
-            // Validação básica de CEP
             if (cep.length !== 8) {
                 cepError.textContent = 'CEP inválido. Digite 8 números.';
                 return;
@@ -178,36 +181,17 @@ document.addEventListener('DOMContentLoaded', function() {
             
             cepError.textContent = '';
             
-            // Simular busca (em um projeto real, seria uma API)
+            // Simula busca de pontos (dados fictícios)
             const resultadosDiv = document.getElementById('resultados-coleta');
             const pontosLista = document.querySelector('.pontos-lista');
+            pontosLista.innerHTML = ''; // limpa resultados anteriores
             
-            // Limpar resultados anteriores
-            pontosLista.innerHTML = '';
-            
-            // Dados simulados
             const pontosSimulados = [
-                {
-                    nome: 'Ecoponto Centro',
-                    endereco: 'Rua das Flores, 123 - Centro',
-                    horario: 'Seg-Sex: 8h-18h, Sáb: 8h-12h',
-                    materiais: 'Papel, plástico, vidro, metal'
-                },
-                {
-                    nome: 'Cooperativa Recicla Mais',
-                    endereco: 'Av. Principal, 456 - Bairro Novo',
-                    horario: 'Ter-Sáb: 9h-17h',
-                    materiais: 'Todos os materiais recicláveis'
-                },
-                {
-                    nome: 'Ponto Verde Shopping',
-                    endereco: 'Shopping Center, Loja 45',
-                    horario: 'Todos os dias: 10h-22h',
-                    materiais: 'Pilhas, eletrônicos, lâmpadas'
-                }
+                { nome: 'Ecoponto Centro', endereco: 'Rua das Flores, 123 - Centro', horario: 'Seg-Sex: 8h-18h, Sáb: 8h-12h', materiais: 'Papel, plástico, vidro, metal' },
+                { nome: 'Cooperativa Recicla Mais', endereco: 'Av. Principal, 456 - Bairro Novo', horario: 'Ter-Sáb: 9h-17h', materiais: 'Todos os materiais recicláveis' },
+                { nome: 'Ponto Verde Shopping', endereco: 'Shopping Center, Loja 45', horario: 'Todos os dias: 10h-22h', materiais: 'Pilhas, eletrônicos, lâmpadas' }
             ];
             
-            // Adicionar pontos à lista
             pontosSimulados.forEach(ponto => {
                 const pontoItem = document.createElement('div');
                 pontoItem.className = 'ponto-item';
@@ -220,15 +204,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 pontosLista.appendChild(pontoItem);
             });
             
-            // Mostrar resultados
             resultadosDiv.classList.remove('hidden');
-            
-            // Scroll para resultados
             resultadosDiv.scrollIntoView({ behavior: 'smooth' });
         });
     }
     
-    // Formatar CEP
+    // Formatação do CEP enquanto digita (adiciona hífen)
     cepInput.addEventListener('input', function() {
         let value = this.value.replace(/\D/g, '');
         if (value.length > 5) {

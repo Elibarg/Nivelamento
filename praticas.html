@@ -32,16 +32,16 @@
     </header>
 
     <main class="container">
+        <!-- Cabeçalho da página -->
         <section class="page-header">
             <h1><i class="fas fa-seedling"></i> Práticas Sustentáveis</h1>
             <p>Adote hábitos simples no seu dia a dia que fazem a diferença para o meio ambiente.</p>
         </section>
 
+        <!-- Grade de cards com práticas -->
         <section class="praticas-grid">
             <article class="pratica-card">
-                <div class="pratica-icon">
-                    <i class="fas fa-tint"></i>
-                </div>
+                <div class="pratica-icon"><i class="fas fa-tint"></i></div>
                 <h3>Economia de Água</h3>
                 <ul>
                     <li>Feche a torneira ao escovar os dentes</li>
@@ -50,11 +50,8 @@
                     <li>Reutilize água da chuva</li>
                 </ul>
             </article>
-
             <article class="pratica-card">
-                <div class="pratica-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
+                <div class="pratica-icon"><i class="fas fa-bolt"></i></div>
                 <h3>Economia de Energia</h3>
                 <ul>
                     <li>Use lâmpadas LED</li>
@@ -63,11 +60,8 @@
                     <li>Escolha eletrodomésticos eficientes</li>
                 </ul>
             </article>
-
             <article class="pratica-card">
-                <div class="pratica-icon">
-                    <i class="fas fa-shopping-bag"></i>
-                </div>
+                <div class="pratica-icon"><i class="fas fa-shopping-bag"></i></div>
                 <h3>Consumo Consciente</h3>
                 <ul>
                     <li>Evite plásticos descartáveis</li>
@@ -76,11 +70,8 @@
                     <li>Compre apenas o necessário</li>
                 </ul>
             </article>
-
             <article class="pratica-card">
-                <div class="pratica-icon">
-                    <i class="fas fa-utensils"></i>
-                </div>
+                <div class="pratica-icon"><i class="fas fa-utensils"></i></div>
                 <h3>Alimentação Sustentável</h3>
                 <ul>
                     <li>Reduza o consumo de carne</li>
@@ -89,11 +80,8 @@
                     <li>Plante sua própria horta</li>
                 </ul>
             </article>
-
             <article class="pratica-card">
-                <div class="pratica-icon">
-                    <i class="fas fa-car"></i>
-                </div>
+                <div class="pratica-icon"><i class="fas fa-car"></i></div>
                 <h3>Mobilidade Sustentável</h3>
                 <ul>
                     <li>Use transporte público</li>
@@ -102,11 +90,8 @@
                     <li>Prefira caminhar para curtas distâncias</li>
                 </ul>
             </article>
-
             <article class="pratica-card">
-                <div class="pratica-icon">
-                    <i class="fas fa-home"></i>
-                </div>
+                <div class="pratica-icon"><i class="fas fa-home"></i></div>
                 <h3>Casa Sustentável</h3>
                 <ul>
                     <li>Separe o lixo para reciclagem</li>
@@ -117,6 +102,7 @@
             </article>
         </section>
 
+        <!-- Calculadora de impacto ambiental (interativa) -->
         <section class="calculadora-impacto">
             <h2><i class="fas fa-calculator"></i> Calcule seu Impacto</h2>
             <p>Descubra quantas árvores você pode salvar com suas ações sustentáveis.</p>
@@ -126,20 +112,18 @@
                     <label>Quantos banhos você toma por semana?</label>
                     <input type="number" id="banhos" min="0" max="20" value="7">
                 </div>
-                
                 <div class="form-group">
                     <label>Quantas sacolas plásticas você evita por semana?</label>
                     <input type="number" id="sacolas" min="0" max="50" value="5">
                 </div>
-                
                 <div class="form-group">
                     <label>Quantos km você deixa de andar de carro por semana?</label>
                     <input type="number" id="km-carro" min="0" max="500" value="20">
                 </div>
-                
                 <button id="calcular-impacto" class="btn-primary">Calcular Meu Impacto</button>
             </div>
             
+            <!-- Resultado da calculadora (inicialmente oculto) -->
             <div id="resultado-impacto" class="resultado-impacto hidden">
                 <h3>Seu impacto positivo:</h3>
                 <div class="resultado-item">
@@ -182,28 +166,30 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <!-- Script específico da calculadora (embutido aqui para facilitar) -->
     <script>
-        // Calculadora de impacto
+        // Aguarda o carregamento completo da página
         document.addEventListener('DOMContentLoaded', function() {
             const calcularBtn = document.getElementById('calcular-impacto');
             
             if (calcularBtn) {
                 calcularBtn.addEventListener('click', function() {
+                    // Obtém os valores dos inputs, convertendo para número; se vazio, assume 0
                     const banhos = parseInt(document.getElementById('banhos').value) || 0;
                     const sacolas = parseInt(document.getElementById('sacolas').value) || 0;
                     const kmCarro = parseInt(document.getElementById('km-carro').value) || 0;
                     
-                    // Cálculos aproximados
-                    const aguaEconomizada = banhos * 50 * 52; // 50 litros por banho mais curto
-                    const arvoresSalvas = Math.floor(sacolas * 0.1 * 52); // 10 sacolas = 1 árvore
-                    const co2Evitado = kmCarro * 0.12 * 52; // 0.12 kg CO2 por km
+                    // Cálculos aproximados (baseados em estudos ambientais)
+                    const aguaEconomizada = banhos * 50 * 52; // 50 litros por banho mais curto, 52 semanas
+                    const arvoresSalvas = Math.floor(sacolas * 0.1 * 52); // 10 sacolas evitadas = 1 árvore
+                    const co2Evitado = kmCarro * 0.12 * 52; // 0.12 kg CO2 por km, 52 semanas
                     
-                    // Atualizar resultados
+                    // Atualiza os elementos HTML com os resultados formatados
                     document.getElementById('agua-economizada').textContent = aguaEconomizada.toLocaleString();
                     document.getElementById('arvores-salvas').textContent = arvoresSalvas;
                     document.getElementById('co2-evitado').textContent = co2Evitado.toFixed(1);
                     
-                    // Mostrar resultados
+                    // Remove a classe 'hidden' para mostrar a seção de resultados
                     document.getElementById('resultado-impacto').classList.remove('hidden');
                 });
             }

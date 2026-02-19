@@ -1,14 +1,25 @@
-// Menu Hamburguer
+/* ===== SUMÁRIO main.js =====
+ * 1. MENU HAMBURGUER
+ * 2. TROCA ENTRE LOGIN E CADASTRO
+ * 3. VALIDAÇÃO DA NEWSLETTER
+ * 4. SIMULAÇÃO DE LOGIN
+ * 5. CONTADOR DE IMPACTO (simulação)
+ * 6. INICIALIZAÇÃO (atualização do ano, etc.)
+ * =========================== */
+// main.js – funcionalidades globais do site
+
+// ---------- Menu Hamburguer ----------
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
 if (hamburger) {
+    // Ao clicar no ícone, alterna as classes 'active' para abrir/fechar o menu
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
 
-    // Fechar menu ao clicar em um link
+    // Fecha o menu automaticamente ao clicar em um link
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
@@ -17,19 +28,21 @@ if (hamburger) {
     });
 }
 
-// Troca entre Login e Cadastro
+// ---------- Troca entre Login e Cadastro ----------
 const showRegisterLink = document.getElementById('show-register');
 const showLoginLink = document.getElementById('show-login');
 const loginForm = document.getElementById('login-form');
 const registerForm = document.getElementById('register-form');
 
 if (showRegisterLink && showLoginLink) {
+    // Exibe formulário de cadastro, esconde login
     showRegisterLink.addEventListener('click', (e) => {
         e.preventDefault();
         loginForm.classList.add('hidden');
         registerForm.classList.remove('hidden');
     });
 
+    // Exibe formulário de login, esconde cadastro
     showLoginLink.addEventListener('click', (e) => {
         e.preventDefault();
         registerForm.classList.add('hidden');
@@ -37,12 +50,12 @@ if (showRegisterLink && showLoginLink) {
     });
 }
 
-// Validação do formulário de newsletter
+// ---------- Validação da Newsletter (página inicial) ----------
 const newsletterForm = document.getElementById('newsletter-form');
 
 if (newsletterForm) {
     newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+        e.preventDefault(); // Impede o envio real do formulário
         
         const nome = document.getElementById('nome').value.trim();
         const email = document.getElementById('email').value.trim();
@@ -50,13 +63,13 @@ if (newsletterForm) {
         const emailError = document.getElementById('email-error');
         const messageDiv = document.getElementById('newsletter-message');
         
-        // Resetar erros
+        // Limpa mensagens de erro anteriores
         nomeError.textContent = '';
         emailError.textContent = '';
         
         let isValid = true;
         
-        // Validação do nome
+        // Validação do nome: não pode estar vazio e deve ter pelo menos 2 caracteres
         if (nome === '') {
             nomeError.textContent = 'Por favor, informe seu nome.';
             isValid = false;
@@ -65,7 +78,7 @@ if (newsletterForm) {
             isValid = false;
         }
         
-        // Validação do email
+        // Validação do e-mail com regex simples
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (email === '') {
             emailError.textContent = 'Por favor, informe seu e-mail.';
@@ -76,12 +89,12 @@ if (newsletterForm) {
         }
         
         if (isValid) {
-            // Simular envio (em um projeto real, seria uma requisição AJAX)
+            // Simula inscrição bem-sucedida
             messageDiv.textContent = `Obrigado, ${nome}! Você receberá nossas dicas sustentáveis em ${email}.`;
             messageDiv.style.display = 'block';
             newsletterForm.reset();
             
-            // Esconder mensagem após 5 segundos
+            // Após 5 segundos, esconde a mensagem
             setTimeout(() => {
                 messageDiv.style.display = 'none';
             }, 5000);
@@ -89,7 +102,7 @@ if (newsletterForm) {
     });
 }
 
-// Sistema de login simulado
+// ---------- Simulação de Login ----------
 const loginFormElement = document.getElementById('login-form');
 const loginMessage = document.getElementById('login-message');
 
@@ -102,13 +115,12 @@ if (loginFormElement) {
         const emailError = document.getElementById('email-login-error');
         const passwordError = document.getElementById('password-error');
         
-        // Resetar erros
         emailError.textContent = '';
         passwordError.textContent = '';
         
         let isValid = true;
         
-        // Validação do email
+        // Validação do e-mail
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (email === '') {
             emailError.textContent = 'Por favor, informe seu e-mail.';
@@ -118,7 +130,7 @@ if (loginFormElement) {
             isValid = false;
         }
         
-        // Validação da senha
+        // Validação da senha (mínimo 6 caracteres)
         if (password === '') {
             passwordError.textContent = 'Por favor, informe sua senha.';
             isValid = false;
@@ -128,12 +140,11 @@ if (loginFormElement) {
         }
         
         if (isValid) {
-            // Simulação de login bem-sucedido
             loginMessage.textContent = 'Login realizado com sucesso! Redirecionando...';
             loginMessage.style.display = 'block';
-            loginMessage.style.backgroundColor = '#81c784';
+            loginMessage.style.backgroundColor = '#81c784'; // verde claro
             
-            // Redirecionar após 2 segundos
+            // Redireciona para a página inicial após 2 segundos
             setTimeout(() => {
                 window.location.href = 'index.html';
             }, 2000);
@@ -141,16 +152,15 @@ if (loginFormElement) {
     });
 }
 
-// Contador de impacto ambiental (exemplo interativo)
+// ---------- Contador de impacto (simulação) ----------
 function initImpactCounter() {
     const impactCards = document.querySelectorAll('.card');
-    
     if (impactCards.length > 0) {
         impactCards.forEach(card => {
             const link = card.querySelector('.btn-secondary');
             if (link) {
                 link.addEventListener('click', function(e) {
-                    // Simular que cada clique contribui para o meio ambiente
+                    // Armazena no localStorage a cada clique (simulação de pontos)
                     if (localStorage.getItem('ecoPoints')) {
                         let points = parseInt(localStorage.getItem('ecoPoints'));
                         points += 10;
@@ -159,7 +169,7 @@ function initImpactCounter() {
                         localStorage.setItem('ecoPoints', '10');
                     }
                     
-                    // Feedback visual
+                    // Feedback visual temporário
                     const originalText = this.textContent;
                     this.textContent = '✓ Contribuição registrada!';
                     this.style.backgroundColor = '#2e7d32';
@@ -176,11 +186,11 @@ function initImpactCounter() {
     }
 }
 
-// Inicializar quando o DOM estiver carregado
+// ---------- Inicializa funções ao carregar a página ----------
 document.addEventListener('DOMContentLoaded', function() {
     initImpactCounter();
     
-    // Adicionar ano atual no rodapé
+    // Atualiza o ano no rodapé dinamicamente
     const footerYear = document.querySelector('.footer-bottom p');
     if (footerYear) {
         const currentYear = new Date().getFullYear();

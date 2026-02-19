@@ -32,25 +32,25 @@
     </header>
 
     <main class="login-container">
+        <!-- Caixa de formulário (login e cadastro) -->
         <div class="login-box">
             <div class="login-header">
                 <h1><i class="fas fa-user-circle"></i> Login</h1>
                 <p>Acesse sua conta para acompanhar seu progresso sustentável</p>
             </div>
             
+            <!-- Formulário de Login -->
             <form id="login-form">
                 <div class="form-group">
                     <label for="login-email"><i class="fas fa-envelope"></i> E-mail</label>
                     <input type="email" id="login-email" placeholder="seu@email.com" required>
                     <div class="error-message" id="email-login-error"></div>
                 </div>
-                
                 <div class="form-group">
                     <label for="login-password"><i class="fas fa-lock"></i> Senha</label>
                     <input type="password" id="login-password" placeholder="Digite sua senha" required>
                     <div class="error-message" id="password-error"></div>
                 </div>
-                
                 <div class="form-options">
                     <label class="checkbox-label">
                         <input type="checkbox" id="remember-me">
@@ -58,70 +58,61 @@
                     </label>
                     <a href="#" class="forgot-password">Esqueci minha senha</a>
                 </div>
-                
                 <button type="submit" class="btn-primary btn-login">
                     <i class="fas fa-sign-in-alt"></i> Entrar
                 </button>
-                
                 <div class="divider">
                     <span>ou</span>
                 </div>
-                
                 <a href="#" class="btn-social">
                     <i class="fab fa-google"></i> Entrar com Google
                 </a>
-                
                 <p class="register-link">
                     Não tem uma conta? <a href="#" id="show-register">Cadastre-se aqui</a>
                 </p>
             </form>
             
-            <!-- Formulário de Cadastro (inicialmente oculto) -->
+            <!-- Formulário de Cadastro (inicialmente oculto pela classe 'hidden') -->
             <form id="register-form" class="hidden">
                 <div class="form-group">
                     <label for="register-name"><i class="fas fa-user"></i> Nome Completo</label>
                     <input type="text" id="register-name" placeholder="Seu nome completo" required>
                     <div class="error-message" id="name-error"></div>
                 </div>
-                
                 <div class="form-group">
                     <label for="register-email"><i class="fas fa-envelope"></i> E-mail</label>
                     <input type="email" id="register-email" placeholder="seu@email.com" required>
                     <div class="error-message" id="email-register-error"></div>
                 </div>
-                
                 <div class="form-group">
                     <label for="register-password"><i class="fas fa-lock"></i> Senha</label>
                     <input type="password" id="register-password" placeholder="Mínimo 8 caracteres" required>
                     <div class="error-message" id="password-register-error"></div>
                 </div>
-                
                 <div class="form-group">
                     <label for="confirm-password"><i class="fas fa-lock"></i> Confirmar Senha</label>
                     <input type="password" id="confirm-password" placeholder="Digite novamente" required>
                     <div class="error-message" id="confirm-error"></div>
                 </div>
-                
                 <div class="form-options">
                     <label class="checkbox-label">
                         <input type="checkbox" id="terms" required>
                         <span>Aceito os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a></span>
                     </label>
                 </div>
-                
                 <button type="submit" class="btn-primary btn-register">
                     <i class="fas fa-user-plus"></i> Criar Conta
                 </button>
-                
                 <p class="login-link">
                     Já tem uma conta? <a href="#" id="show-login">Faça login aqui</a>
                 </p>
             </form>
             
-            <!-- Mensagem de sucesso -->
+            <!-- Mensagem de sucesso (exibida após login/cadastro) -->
             <div id="login-message" class="success-message"></div>
         </div>
         
+        <!-- Painel informativo sobre os benefícios de criar uma conta -->
         <div class="login-info">
             <h2>Por que criar uma conta?</h2>
             <ul>
