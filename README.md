@@ -13,7 +13,7 @@ O site possui sistema de login e cadastro (simulado), formulário de
 newsletter, páginas informativas e funcionalidades interativas
 desenvolvidas em HTML, CSS e JavaScript.
 
-------------------------------------------------------------------------
+
 
 ## Como Usar
 
@@ -37,7 +37,6 @@ desenvolvidas em HTML, CSS e JavaScript.
 -    Informações educativas sobre mudanças climáticas e boas práticas
     ambientais.
 
-------------------------------------------------------------------------
 
 ##  Como Funciona
 
