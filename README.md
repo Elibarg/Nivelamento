@@ -57,6 +57,3 @@ O projeto foi desenvolvido utilizando:
 -   Simulação de busca de pontos de coleta com validação de CEP.
 -   Validação de senha com requisitos de segurança (letras maiúsculas,
     minúsculas e números).
-
-Obs: O sistema de login e a busca por CEP são simulações e não utilizam
-banco de dados ou API externa.
